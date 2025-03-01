@@ -1,5 +1,7 @@
 {
-  "welcome": "Welcome to our Event",
-  "invite": "You're invited!",
-  "rsvp": "Please RSVP below."
+  "invitationTitle": "You're Invited to Ani & Agati's Baptism! 🎉",
+  "invitationSubtitle": "Join us for a special day full of love and blessings.",
+  "invitationDetails": "📅 Date: Sunday, March 10th, 2024\n📍 Location: Saint Gregor Church, Bremen",
+  "rsvpButton": "Confirm Your Attendance",
+  "rsvpMessage": "Thank you for your RSVP! We are excited to see you!"
 }

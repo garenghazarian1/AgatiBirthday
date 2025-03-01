@@ -1,0 +1,10 @@
+.container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qrImage {
+  margin-top: 10px;
+  border: 2px solid #6a4c93;
+  border-radius: 8px;
+}
