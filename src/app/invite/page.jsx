@@ -1,9 +1,18 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 // import styles from "./Invite.module.css";
 
 export default function InvitePage() {
+  return (
+    <Suspense fallback={<p>Loading invitation...</p>}>
+      <InviteContent />
+    </Suspense>
+  );
+}
+
+function InviteContent() {
   const searchParams = useSearchParams();
   const name = searchParams.get("name") || "Guest";
   const email = searchParams.get("email") || "No Email";
@@ -16,7 +25,7 @@ export default function InvitePage() {
         Hello, <strong>{name}</strong>!
       </p>
       <p className={styles.text}>
-        We are delighted to invite you to Ani & Agati’s Baptism.
+        We are delighted to invite you to Ani & Agati&apos;s Baptism.
       </p>
       <p className={styles.text}>📧 Email: {email}</p>
       <p className={styles.text}>👥 Number of Guests: {guests}</p>

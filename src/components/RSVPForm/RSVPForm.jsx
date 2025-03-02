@@ -32,7 +32,7 @@ export default function RSVPForm() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>🎉 RSVP to Ani & Agati's Baptism</h2>
+      <h2 className={styles.title}>🎉 RSVP to Ani & Agati&apos;s Baptism</h2>
 
       {!submitted ? (
         <form onSubmit={handleSubmit} className={styles.form}>
