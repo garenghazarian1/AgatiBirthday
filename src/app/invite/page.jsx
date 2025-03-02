@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import styles from "./Invite.module.css";
+// import styles from "./Invite.module.css";
 
 export default function InvitePage() {
   const searchParams = useSearchParams();
