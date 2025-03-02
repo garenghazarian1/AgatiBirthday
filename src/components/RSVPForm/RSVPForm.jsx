@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import styles from "./RSVPForm.module.css";
-import InvitationPDF from "@/components/InvitationPDF";
 
 export default function RSVPForm() {
   const [name, setName] = useState("");
@@ -10,21 +9,30 @@ export default function RSVPForm() {
   const [guests, setGuests] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    const response = await fetch("/api/rsvp", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, guests }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}/api/rsvp`, // ✅ Uses correct API URL
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, guests }),
+      }
+    );
+
+    const data = await response.json();
 
     if (response.ok) {
       setSubmitted(true);
     } else {
-      alert("Error submitting RSVP. Please try again.");
+      setError(data.error || "Error submitting RSVP. Please try again.");
     }
 
     setLoading(false);
@@ -32,7 +40,7 @@ export default function RSVPForm() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>🎉 RSVP to Ani & Agati&apos;s Baptism</h2>
+      <h2 className={styles.title}>🎉 RSVP to Ani & Agati's Baptism</h2>
 
       {!submitted ? (
         <form onSubmit={handleSubmit} className={styles.form}>
@@ -63,14 +71,10 @@ export default function RSVPForm() {
           <button type="submit" className={styles.button} disabled={loading}>
             {loading ? "Submitting..." : "Submit RSVP"}
           </button>
+          {error && <p className={styles.error}>{error}</p>}
         </form>
       ) : (
-        <>
-          <p className={styles.confirmation}>
-            ✅ Thank you for RSVPing, {name}!
-          </p>
-          <InvitationPDF name={name} email={email} guests={guests} />
-        </>
+        <p className={styles.confirmation}>✅ Thank you for RSVPing!</p>
       )}
     </div>
   );
