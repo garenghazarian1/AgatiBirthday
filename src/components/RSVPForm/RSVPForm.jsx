@@ -11,28 +11,32 @@ export default function RSVPForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // ✅ Ensure NEXT_PUBLIC_BASE_URL is used correctly
+  const API_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/rsvp`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/rsvp`, // ✅ Uses correct API URL
-      {
+    try {
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ name, email, guests }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`❌ Error: ${response.statusText}`);
       }
-    );
 
-    const data = await response.json();
-
-    if (response.ok) {
+      const data = await response.json();
       setSubmitted(true);
-    } else {
-      setError(data.error || "Error submitting RSVP. Please try again.");
+    } catch (error) {
+      console.error("❌ API Call Error:", error);
+      setError(error.message || "Failed to submit RSVP. Please try again.");
     }
 
     setLoading(false);
