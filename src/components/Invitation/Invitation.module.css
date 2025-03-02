@@ -1,42 +1,127 @@
-.container {
-  text-align: center;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  background: #fff8f0;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/* Main Card Styling */
+.card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 223, 186, 0.6)
+  );
+  border: 3px solid transparent;
+  box-shadow: 0px 4px 10px rgba(255, 223, 186, 0.4);
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Shimmer Border */
+.shimmerBorder {
+  position: relative;
+  background-image: linear-gradient(white, white),
+    linear-gradient(120deg, gold, silver, gold);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: shimmer 3s infinite linear;
+}
+
+/* Title Styling */
 .title {
   font-size: 28px;
+  font-family: "Great Vibes", cursive;
   font-weight: bold;
-  color: #6a4c93;
+  color: gold;
+  text-shadow: 1px 1px 5px rgba(255, 223, 186, 0.6);
 }
 
+/* Subtitle Styling */
 .subtitle {
   font-size: 20px;
   margin-top: 8px;
+  font-family: "Playfair Display", serif;
+  color: #444;
+}
+
+/* Details Text */
+.details {
+  font-size: 16px;
+  margin-top: 15px;
+  font-family: "Poppins", sans-serif;
   color: #555;
 }
 
-.details {
-  font-size: 18px;
-  margin-top: 15px;
-}
-
+/* RSVP Button */
 .rsvpButton {
   margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  color: white;
-  background: #6a4c93;
-  border: none;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+  background: linear-gradient(45deg, gold, #ffeb99);
+  border: 2px solid gold;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(255, 223, 186, 0.4);
+  transition: all 0.3s ease-in-out;
 }
 
+/* RSVP Button Hover */
 .rsvpButton:hover {
-  background: #5a3d82;
+  background: linear-gradient(45deg, #ffeb99, gold);
+  transform: scale(1.05);
+}
+
+/* Hover Glow Effect */
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 6px 15px rgba(255, 223, 186, 0.6);
+  transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Responsive Design for Mobile */
+@media screen and (max-width: 768px) {
+  .card {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .details {
+    font-size: 14px;
+  }
+
+  .rsvpButton {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
 }

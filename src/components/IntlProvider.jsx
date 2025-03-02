@@ -8,10 +8,10 @@ import { useMessages } from "../lib/i18n";
 export default function IntlProvider({ children }) {
   const pathname = usePathname();
   const router = useRouter();
-  const supportedLocales = ["en", "am", "ar", "ru"];
+  const supportedLocales = ["en", "am", "ar", "ru", "de"];
   const defaultLocale = "en";
 
-  // Get language from localStorage or browser
+  // ✅ Function to detect user language from localStorage or browser settings
   const detectUserLanguage = () => {
     if (typeof window !== "undefined") {
       const savedLocale = localStorage.getItem("user-locale");
@@ -26,22 +26,23 @@ export default function IntlProvider({ children }) {
     return defaultLocale;
   };
 
-  const [locale, setLocale] = useState(
-    pathname.split("/")[1] || detectUserLanguage()
-  );
-  const [messages, setMessages] = useState(useMessages(locale));
+  // ✅ Extract locale from URL or use detected language
+  const urlLocale = pathname.split("/")[1];
+  const initialLocale = supportedLocales.includes(urlLocale)
+    ? urlLocale
+    : detectUserLanguage();
 
-  useEffect(() => {
-    setMessages(useMessages(locale)); // Update messages when locale changes
-  }, [locale]);
+  // ✅ State for current locale & messages
+  const [locale, setLocale] = useState(initialLocale);
+  const messages = useMessages(locale);
 
+  // ✅ Effect to update locale if URL changes
   useEffect(() => {
-    const urlLocale = pathname.split("/")[1];
-    if (urlLocale && supportedLocales.includes(urlLocale)) {
+    if (supportedLocales.includes(urlLocale)) {
       setLocale(urlLocale);
-      localStorage.setItem("user-locale", urlLocale); // Save selected language
+      localStorage.setItem("user-locale", urlLocale);
     }
-  }, [pathname]);
+  }, [urlLocale]);
 
   console.log("✅ IntlProvider is rendering");
   console.log("🔹 Locale Detected:", locale);
@@ -51,7 +52,7 @@ export default function IntlProvider({ children }) {
     <NextIntlClientProvider
       messages={messages}
       locale={locale}
-      defaultLocale="en"
+      defaultLocale={defaultLocale}
       timeZone="Europe/Berlin"
     >
       {children}
