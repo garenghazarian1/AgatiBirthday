@@ -1,30 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./RSVPForm.module.css";
+import InvitationPDF from "@/components/InvitationPDF";
 
 export default function RSVPForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [guests, setGuests] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [responses, setResponses] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const savedResponses =
-      JSON.parse(localStorage.getItem("rsvpResponses")) || [];
-    setResponses(savedResponses);
-  }, []);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    const newResponse = { name, email, guests };
-    const updatedResponses = [...responses, newResponse];
-    setResponses(updatedResponses);
-    localStorage.setItem("rsvpResponses", JSON.stringify(updatedResponses));
+    const response = await fetch("/api/rsvp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, guests }),
+    });
 
-    setSubmitted(true);
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      alert("Error submitting RSVP. Please try again.");
+    }
+
+    setLoading(false);
   };
 
   return (
@@ -57,12 +60,17 @@ export default function RSVPForm() {
             className={styles.input}
             required
           />
-          <button type="submit" className={styles.button}>
-            Submit RSVP
+          <button type="submit" className={styles.button} disabled={loading}>
+            {loading ? "Submitting..." : "Submit RSVP"}
           </button>
         </form>
       ) : (
-        <p className={styles.confirmation}>✅ Thank you for RSVPing!</p>
+        <>
+          <p className={styles.confirmation}>
+            ✅ Thank you for RSVPing, {name}!
+          </p>
+          <InvitationPDF name={name} email={email} guests={guests} />
+        </>
       )}
     </div>
   );

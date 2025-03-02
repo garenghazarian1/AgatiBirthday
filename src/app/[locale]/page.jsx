@@ -14,13 +14,11 @@ export default function HomePage() {
 
   return (
     <div style={{ textAlign: "center", padding: "20px" }}>
-      {/* <h1>{t("welcome")}</h1>
-      <p>{t("invite")}</p> */}
       <LanguageSwitcher />
       <Invitation />
       <CountdownTimer />
       <RSVPForm />
-      <QRCodeGenerator />
+      {/* <QRCodeGenerator /> */}
     </div>
   );
 }
