@@ -1,0 +1,70 @@
+/* 🎉 Invite Page Styling */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  background: black;
+  border: 2px solid gold;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px rgba(255, 215, 0, 0.6);
+  animation: fadeIn 0.6s ease-in-out;
+  color: white;
+}
+
+/* ✨ Title Styling */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0px 0px 10px rgba(255, 215, 0, 0.8);
+  margin-bottom: 10px;
+}
+
+/* 🌟 Text Styling */
+.text {
+  font-size: 1rem;
+  color: #c0c0c0;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+/* 🎊 Special Effects on Name */
+.text strong {
+  color: #ffd700;
+  font-size: 1.1rem;
+}
+
+/* 🎈 Hover & Focus Effects */
+.container:hover {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.4),
+    inset 0px 0px 15px rgba(255, 215, 0, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+/* 🌠 Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+    border-radius: 15px;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .text {
+    font-size: 0.9rem;
+  }
+}

@@ -9,8 +9,10 @@ export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const [currentLocale, setCurrentLocale] = useState("en");
+  const [isMounted, setIsMounted] = useState(false); // ✅ Prevents hydration errors
 
   useEffect(() => {
+    setIsMounted(true);
     if (typeof window !== "undefined") {
       const savedLocale = localStorage.getItem("user-locale") || "en";
       setCurrentLocale(savedLocale);
@@ -104,12 +106,10 @@ export default function LanguageSwitcher() {
       fontWeight: "bold",
     }),
   };
-
+  if (!isMounted) return null; // ✅ Prevents hydration errors
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        {/* <h2 className={styles.remark}>🌎 Choose Your Language</h2> */}
-        {/* ✅ New Heading */}
         <Select
           options={languageOptions}
           onChange={changeLanguage}
@@ -117,8 +117,8 @@ export default function LanguageSwitcher() {
             (option) => option.value === currentLocale
           )}
           styles={customStyles}
-          menuPlacement="auto" // ✅ Prevents dropdown from getting cut off
-        ></Select>
+          menuPlacement="auto"
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Invitation from "@/components/Invitation/Invitation";
 import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
@@ -21,12 +21,12 @@ export default function HomePage() {
   const t = (key) => messages[key] || key; // Fallback for missing translations
 
   return (
-    <div>
+    <>
       <LanguageSwitcher />
       <Invitation />
       <CountdownTimer />
       <RSVPForm />
       {/* <QRCodeGenerator /> */}
-    </div>
+    </>
   );
 }
