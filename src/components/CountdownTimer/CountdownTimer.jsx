@@ -45,11 +45,13 @@ export default function CountdownTimer() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.h2}>⏳ Countdown to Baptism:</h2>
-      <p className={styles.timer}>
-        {timeLeft.months} months {timeLeft.days} days {timeLeft.hours}h{" "}
-        {timeLeft.minutes}m {timeLeft.seconds}s
-      </p>
+      <div className={styles.flexbox}>
+        <h2 className={styles.h2}>⏳ Countdown to Baptism:</h2>
+        <p className={styles.timer}>
+          {timeLeft.months} months {timeLeft.days} days {timeLeft.hours}h{" "}
+          {timeLeft.minutes}m {timeLeft.seconds}s
+        </p>
+      </div>
     </div>
   );
 }

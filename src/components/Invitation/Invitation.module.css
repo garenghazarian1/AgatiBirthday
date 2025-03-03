@@ -1,64 +1,104 @@
 .card {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  width: 100vw;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
   text-align: center;
-  color: white;
   transition: all 0.3s ease-in-out;
+  background: url("/backgroundB.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+.topShadow {
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  background: linear-gradient(
+    to bottom,
+    rgb(196, 151, 62) 0%,
+    /* Pure Gold */ rgba(255, 223, 102, 0.85) 25%,
+    /* Rich Gold */ rgba(255, 230, 153, 0.65) 50%,
+    /* Soft Gold */ rgba(255, 240, 204, 0.15) 85%,
+    /* Light Champagne Gold */ rgba(255, 250, 230, 0) 100%
+      /* Fully Transparent */
+  );
+}
+
+/* .bottomShadow {
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  bottom: -17;
+  background: linear-gradient(
+    to top,
+    rgb(196, 151, 62) 0%,
+     rgba(255, 223, 102, 0.85) 25%,
+     rgba(255, 230, 153, 0.65) 50%,
+     rgba(255, 240, 204, 0.15) 85%,
+    rgba(255, 250, 230, 0) 100%
+      
+  );
+} */
 
 .card:hover {
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  box-shadow: 0 0 30px rgba(255, 182, 193, 0.5); /* Soft pink glow */
 }
 
-.shimmerBorder {
-  border: 3px solid gold;
-  animation: shimmer 2s infinite alternate;
-}
-
-@keyframes shimmer {
-  0% {
-    border-color: gold;
-  }
-  100% {
-    border-color: silver;
-  }
+.textContainer {
+  width: 60%;
+  background: rgba(255, 240, 245, 0.01); /* Soft cream-pink */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 .title {
-  font-size: 2rem;
+  width: 60%;
+  font-size: 1.8rem;
   font-weight: bold;
-  color: #ffd700;
+  color: #b87d6b; /* Rose gold */
+  text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.4);
+  padding: 1rem;
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  margin-top: 5px;
+  font-size: 1.4rem;
+  color: #8b5e5b; /* Muted warm brown */
 }
 
 .details {
-  font-size: 1rem;
-  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #4a2c2a; /* Deep brown */
+  font-weight: 500;
 }
 
 .googleMapsLink {
   display: inline-block;
-  margin-top: 15px;
-  color: #ffd700;
-  text-decoration: underline;
+  margin-top: 5px;
+  color: #b87d6b; /* Rose gold */
+  text-decoration: none;
   font-size: 1rem;
-  transition: color 0.3s ease-in-out;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
 }
 
 .googleMapsLink:hover {
-  color: silver;
+  color: #8b5e5b;
+  text-decoration: underline;
 }
 
 .mapContainer {
   margin-top: 20px;
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
 .mapIframe {
@@ -69,25 +109,143 @@
 }
 
 .rsvpButton {
-  background: gold;
-  color: black;
+  background: linear-gradient(135deg, #ffd700, #ffb347);
+  color: #4a2c2a;
   font-size: 1.2rem;
-  padding: 10px 20px;
+  padding: 12px 25px;
   margin-top: 20px;
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   cursor: pointer;
+  font-weight: bold;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 10px rgba(255, 215, 0, 0.3);
 }
 
 .rsvpButton:hover {
-  background: silver;
-  color: black;
+  background: linear-gradient(135deg, #f5deb3, #ffe4b5);
+  color: #4a2c2a;
+  box-shadow: 0px 5px 15px rgba(255, 182, 193, 0.4);
 }
 
 .loading {
   font-size: 1.5rem;
-  color: white;
+  color: #8b5e5b;
   text-align: center;
   margin-top: 50px;
+}
+
+/* 📱 Responsive Adjustments */
+
+@media (max-width: 1160px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .details {
+    font-size: 1rem;
+  }
+
+  .googleMapsLink {
+    font-size: 1rem;
+  }
+
+  .rsvpButton {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+  }
+
+  .mapIframe {
+    height: 300px;
+  }
+}
+@media (max-width: 900px) {
+  /* .textContainer {
+    width: 70%;
+    padding: 1.5rem;
+  } */
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .details {
+    font-size: 1rem;
+  }
+  .googleMapsLink {
+    font-size: 1rem;
+  }
+
+  .rsvpButton {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+
+  .mapIframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 760px) {
+  .title {
+    font-size: 1rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .details {
+    font-size: 0.8rem;
+  }
+  .googleMapsLink {
+    font-size: 0.8rem;
+  }
+
+  .rsvpButton {
+    font-size: 0.8rem;
+    padding: 12px 25px;
+  }
+
+  .mapIframe {
+    height: 300px;
+  }
+}
+
+@media (max-width: 650px) {
+  .textContainer {
+    width: 70%;
+    padding: 0.5rem;
+  }
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.7rem;
+  }
+
+  .details {
+    font-size: 0.7rem;
+  }
+  .googleMapsLink {
+    font-size: 0.7rem;
+  }
+
+  .rsvpButton {
+    font-size: 0.7rem;
+    padding: 12px 25px;
+  }
+
+  .mapIframe {
+    height: 300px;
+  }
 }

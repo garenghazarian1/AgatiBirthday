@@ -7,8 +7,9 @@
 }
 
 body {
+  width: 100vw;
+  height: 100%;
   font-family: var(--font-body);
-  background: black;
   color: var(--text-dark);
 }
 
@@ -48,11 +49,6 @@ body {
 }
 
 /* Apply Global Styles */
-body {
-  background: var(--background-light);
-  color: var(--text-dark);
-  font-family: "Poppins", sans-serif;
-}
 
 /* Gold Text Effect */
 .gold-text {

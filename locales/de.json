@@ -1,7 +1,9 @@
 {
-  "invitationTitle": "Sie sind zur Taufe von Ani & Agati eingeladen! 🎉",
+  "invitationTitle": "Sie sind zur Taufe von Ani & Agati eingeladen!",
   "invitationSubtitle": "Begleiten Sie uns an diesem besonderen Tag voller Liebe und Segen.",
-  "invitationDetails": "📅 Datum: Mittwoch, 30. Juli 2025\n📍 Ort: Kathedrale von Etschmiadsin, Armenien",
+  "invitationDetails": "📅 Datum: Mittwoch, 30. Juli 2025",
+  "invitationLocation": "📍 Ort: Kathedrale von Etschmiadsin, Armenien",
+
   "googleMapsLink": "📍 Standort auf Google Maps anzeigen",
   "rsvpButton": "Teilnahme bestätigen",
   "rsvpMessage": "Danke für Ihre Zusage! Wir freuen uns auf Sie!"

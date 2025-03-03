@@ -1,106 +1,49 @@
-/* Fade-In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Countdown Timer Container */
 .container {
-  text-align: center;
-  max-width: 400px;
-  margin: 20px auto;
-  padding: 20px;
+  width: 100%;
+  height: 80px;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.9),
     rgba(255, 223, 186, 0.6)
   );
-  border: 3px solid gold;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(255, 223, 186, 0.4);
-  animation: fadeIn 1.5s ease-out;
+  border: 1px solid gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Countdown Timer Title */
 .h2 {
-  font-size: 24px;
-  font-family: "Playfair Display", serif;
-  color: gold;
-  text-shadow: 1px 1px 4px rgba(255, 223, 186, 0.6);
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  color: black;
 }
 
 /* Countdown Timer Numbers */
 .timer {
-  font-size: 26px;
-  font-weight: bold;
+  font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  color: #444;
-  padding: 10px;
-  border-radius: 8px;
-  background: linear-gradient(45deg, gold, silver);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Timer Glow Effect */
-.timer:hover {
-  transform: scale(1.05);
-  text-shadow: 2px 2px 6px rgba(255, 223, 186, 0.7);
-}
-
-/* Google Maps Link */
-.googleMapsLink {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: gold;
-  text-decoration: none;
-  padding: 8px 12px;
-  border: 2px solid gold;
-  border-radius: 8px;
-  background: linear-gradient(45deg, gold, silver);
-  box-shadow: 0px 4px 8px rgba(255, 223, 186, 0.4);
-  transition: all 0.3s ease-in-out;
-}
-
-.googleMapsLink:hover {
-  background: linear-gradient(45deg, silver, gold);
-  text-decoration: underline;
-  transform: scale(1.05);
-}
-
-/* Map Container */
-.mapContainer {
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
-  margin: 20px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 4px 12px rgba(255, 223, 186, 0.4);
+  color: black;
 }
 
 /* Responsive Styling */
 @media screen and (max-width: 768px) {
-  .container {
-    width: 90%;
+  /* .container {
     padding: 15px;
-  }
+  } */
 
   .h2 {
-    font-size: 20px;
+    font-size: 0.8rem;
   }
 
   .timer {
-    font-size: 22px;
+    font-size: 0.8rem;
   }
 }
