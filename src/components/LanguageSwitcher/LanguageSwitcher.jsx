@@ -42,16 +42,15 @@ export default function LanguageSwitcher() {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      background: "black",
-      border: "2px solid gold",
-      borderRadius: "15px",
-      padding: "10px",
+      background: "rgba(0, 0, 0, 0.6)",
+      border: "1px solid gold",
+      borderRadius: "1rem",
+      padding: "0.5rem",
       fontSize: "0.8rem",
       color: "#FFD700", // Gold text
       boxShadow: state.isFocused
         ? "0px 0px 15px rgba(255, 215, 0, 0.6)" // Gold glow when focused
         : "none",
-      transition: "all 0.3s ease-in-out",
     }),
 
     singleValue: (provided) => ({
@@ -59,22 +58,23 @@ export default function LanguageSwitcher() {
       fontSize: "0.8rem",
       color: "#FFD700", // Gold text
       fontWeight: "bold",
-      textShadow: "0px 0px 6px rgba(255, 215, 0, 0.5)", // Subtle glow
     }),
 
     menu: (provided) => ({
       ...provided,
-      background: "black",
+      display: "flex",
+      justifyContent: "center",
+      background: "rgba(0, 0, 0, 0.9)",
       border: "1px solid gold",
-      borderRadius: "10px",
+      borderRadius: "1rem",
       boxShadow: "0px 0px 10px rgba(255, 215, 0, 0.4)", // Soft gold glow
-      padding: "10px",
+      padding: "0.8px",
       zIndex: 1000,
     }),
 
     option: (provided, state) => ({
       ...provided,
-      padding: "12px",
+      padding: "0.8rem",
       fontSize: "0.8rem",
       color: state.isFocused ? "#FFD700" : "#C0C0C0", // Gold on focus, Silver default
       fontWeight: state.isFocused ? "bold" : "normal",
@@ -95,7 +95,7 @@ export default function LanguageSwitcher() {
 
     menuList: (provided) => ({
       ...provided,
-      padding: "8px",
+      padding: "0.5rem",
     }),
 
     placeholder: (provided) => ({
