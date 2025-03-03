@@ -1,62 +1,51 @@
-/* Fade-In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Container */
 .container {
-  text-align: center;
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 20px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  padding: 1rem;
   background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 223, 186, 0.6)
-  );
-  border: 3px solid gold;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(255, 223, 186, 0.4);
-  animation: fadeIn 1.5s ease-out;
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 223, 186, 0.6)
+    ),
+    url("/backgroundA.webp") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Title */
 .title {
-  font-size: 26px;
+  text-align: center;
+  font-size: 1rem;
   font-family: "Playfair Display", serif;
-  color: gold;
-  text-shadow: 1px 1px 4px rgba(255, 223, 186, 0.6);
+  color: rgb(220, 162, 16);
 }
 
 /* Form */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-top: 15px;
+  gap: 0.5rem;
+  margin-top: 1rem;
 }
 
 /* Input Fields */
 .input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid gold;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.8);
+  padding: 0.4rem;
+  font-size: 1rem;
+  border: 1px solid gold;
+  border-radius: 0.5rem;
+  background: rgba(231, 236, 202, 0.8);
   color: #333;
   font-family: "Poppins", sans-serif;
-  transition: all 0.3s ease-in-out;
 }
 
 .input:focus {
+  border: 3px solid gold;
   border-color: silver;
   box-shadow: 0px 4px 8px rgba(255, 223, 186, 0.5);
   outline: none;
@@ -64,26 +53,25 @@
 
 /* Submit Button */
 .button {
-  padding: 12px;
-  font-size: 18px;
+  padding: 1rem;
+  font-size: 1rem;
   font-weight: bold;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(45deg, gold, silver);
-  color: #222;
+  border-radius: 0.6rem;
+  background: linear-gradient(45deg, gold, rgb(181, 132, 10));
+  color: #ffffff;
   cursor: pointer;
   box-shadow: 0px 4px 12px rgba(255, 223, 186, 0.5);
   transition: all 0.3s ease-in-out;
 }
 
 .button:hover {
-  background: linear-gradient(45deg, silver, gold);
   transform: scale(1.05);
 }
 
 /* Confirmation Message */
 .confirmation {
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: bold;
   color: gold;
   text-shadow: 1px 1px 3px rgba(255, 223, 186, 0.6);
@@ -91,7 +79,7 @@
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .container {
     width: 90%;
     padding: 15px;
@@ -108,4 +96,4 @@
   .button {
     font-size: 16px;
   }
-}
+} */

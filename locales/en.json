@@ -4,6 +4,25 @@
   "invitationDetails": "📅 Date: Wednesday, July 30th, 2025",
   "invitationLocation": "📍 Location: Etchmiadzin Cathedral, Armenia",
   "googleMapsLink": "📍 View Location on Google Maps",
+  "rsvpTitle": "🎉 RSVP to Ani & Agati's Baptism",
+  "rsvpMessage": "Thank you for your RSVP! We are excited to see you!",
   "rsvpButton": "Confirm Your Attendance",
-  "rsvpMessage": "Thank you for your RSVP! We are excited to see you!"
+  "rsvpForm": {
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "guestsPlaceholder": "Number of Guests",
+    "submitButton": "Submit RSVP",
+    "submitting": "Submitting..."
+  },
+  "errorMessages": "An error occurred. Please try again.",
+  "invitationTitleA": "Invitation to Ani & Agati's Baptism",
+  "dear": "Dear",
+  "invitationMessage": "We are delighted to invite you to this special occasion.",
+  "email": "Email",
+  "guests": "Guests",
+  "date": "Date",
+  "location": "Location",
+  "invitationClosing": "We look forward to celebrating this moment with you!",
+  "pdfGenerating": "Generating PDF...",
+  "pdfDownloadButton": "📄 Download Your Invitation"
 }

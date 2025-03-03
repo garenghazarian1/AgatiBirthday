@@ -1,10 +1,28 @@
 {
-  "invitationTitle": "Sie sind zur Taufe von Ani & Agati eingeladen!",
-  "invitationSubtitle": "Begleiten Sie uns an diesem besonderen Tag voller Liebe und Segen.",
+  "invitationTitle": "Du bist zur Taufe von Ani & Agati eingeladen!",
+  "invitationSubtitle": "Begleite uns an diesem besonderen Tag voller Liebe und Segen.",
   "invitationDetails": "📅 Datum: Mittwoch, 30. Juli 2025",
   "invitationLocation": "📍 Ort: Kathedrale von Etschmiadsin, Armenien",
-
   "googleMapsLink": "📍 Standort auf Google Maps anzeigen",
-  "rsvpButton": "Teilnahme bestätigen",
-  "rsvpMessage": "Danke für Ihre Zusage! Wir freuen uns auf Sie!"
+  "rsvpTitle": "🎉 Bestätige deine Teilnahme an der Taufe von Ani & Agati",
+  "rsvpMessage": "Danke für deine Anmeldung! Wir freuen uns auf dich!",
+  "rsvpButton": "Bestätige deine Teilnahme",
+  "rsvpForm": {
+    "namePlaceholder": "Dein Name",
+    "emailPlaceholder": "Deine E-Mail",
+    "guestsPlaceholder": "Anzahl der Gäste",
+    "submitButton": "Antwort senden",
+    "submitting": "Wird gesendet..."
+  },
+  "errorMessages": "Ein Fehler ist aufgetreten. Bitte versuche es erneut.",
+  "invitationTitleA": "Einladung zur Taufe von Ani & Agati",
+  "dear": "Lieber",
+  "invitationMessage": "Wir freuen uns, Sie zu diesem besonderen Anlass einzuladen.",
+  "email": "E-Mail",
+  "guests": "Gäste",
+  "date": "Datum",
+  "location": "Ort",
+  "invitationClosing": "Wir freuen uns darauf, diesen Moment mit Ihnen zu feiern!",
+  "pdfGenerating": "PDF wird erstellt...",
+  "pdfDownloadButton": "📄 Einladung herunterladen"
 }

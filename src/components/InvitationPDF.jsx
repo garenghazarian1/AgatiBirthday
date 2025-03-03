@@ -11,41 +11,33 @@ import {
 
 export default function InvitationPDF({ name, email, guests }) {
   const styles = StyleSheet.create({
-    page: {
-      padding: 40,
-      fontSize: 14,
-      backgroundColor: "#f4f1e9", // Soft warm background
-    },
+    page: { padding: 40, fontSize: 14, backgroundColor: "#f8f8f8" },
     section: {
-      padding: 30,
+      padding: 20,
       backgroundColor: "#fff",
-      borderRadius: 12,
+      borderRadius: 10,
       textAlign: "center",
-      border: "2px solid #d4af37", // Gold border
-      boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
     },
     title: {
-      fontSize: 28,
+      fontSize: 26,
       fontWeight: "bold",
       marginBottom: 15,
-      color: "#b8860b", // Deep gold
+      color: "#2c3e50",
       textTransform: "uppercase",
-      textDecoration: "underline",
     },
     text: {
-      marginBottom: 10,
+      marginBottom: 8,
       fontSize: 16,
-      color: "#2c3e50", // Dark blue for contrast
+      color: "#34495e",
     },
     highlight: {
       fontWeight: "bold",
-      color: "#c0392b", // Elegant red accent
+      color: "#d35400",
     },
     footer: {
       marginTop: 20,
       fontSize: 12,
       color: "#7f8c8d",
-      fontStyle: "italic",
     },
   });
 
