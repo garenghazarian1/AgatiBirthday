@@ -4,11 +4,13 @@ import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import styles from "./LanguageSwitcher.module.css";
+// import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
+import FlipClock from "@/components/FlipClock/FlipClock";
 
 export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
-  const [currentLocale, setCurrentLocale] = useState("en");
+  const [currentLocale, setCurrentLocale] = useState("am");
   const [isMounted, setIsMounted] = useState(false); // ✅ Prevents hydration errors
 
   useEffect(() => {
@@ -33,8 +35,8 @@ export default function LanguageSwitcher() {
   };
 
   const languageOptions = [
-    { value: "en", label: "En" },
     { value: "am", label: "Am" },
+    { value: "en", label: "En" },
     { value: "ar", label: "Ar" },
     { value: "ru", label: "Ru" },
     { value: "de", label: "De" },
@@ -44,15 +46,18 @@ export default function LanguageSwitcher() {
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      background: "rgba(0, 0, 0, 0.6)",
-      border: "1px solid gold",
-      borderRadius: "1rem",
+      background: "rgba(0, 0, 0, 0.0)",
+      border: "none",
+      borderRadius: "none",
       padding: "0.5rem",
       fontSize: "0.8rem",
       color: "#FFD700", // Gold text
-      boxShadow: state.isFocused
-        ? "0px 0px 15px rgba(255, 215, 0, 0.6)" // Gold glow when focused
-        : "none",
+
+      boxShadow: state.isFocused ? "none" : provided.boxShadow, // Remove blue border
+      borderColor: state.isFocused ? "#FFD700" : "transparent", // Optional: Add gold border when focused
+      "&:hover": {
+        borderColor: "#FFD700", // Gold border on hover
+      },
     }),
 
     singleValue: (provided) => ({
@@ -66,11 +71,11 @@ export default function LanguageSwitcher() {
       ...provided,
       display: "flex",
       justifyContent: "center",
-      background: "rgba(0, 0, 0, 0.9)",
+      background: "rgba(255, 255, 255, 0.2)",
       border: "1px solid gold",
       borderRadius: "1rem",
       boxShadow: "0px 0px 10px rgba(255, 215, 0, 0.4)", // Soft gold glow
-      padding: "0.8px",
+      // padding: "0.8px",
       zIndex: 1000,
     }),
 
@@ -78,7 +83,7 @@ export default function LanguageSwitcher() {
       ...provided,
       padding: "0.8rem",
       fontSize: "0.8rem",
-      color: state.isFocused ? "#FFD700" : "#C0C0C0", // Gold on focus, Silver default
+      color: state.isFocused ? "#FFD700" : "black", // Gold on focus, Silver default
       fontWeight: state.isFocused ? "bold" : "normal",
       borderRadius: "10px",
       background: state.isFocused ? "rgba(255, 215, 0, 0.2)" : "transparent",
@@ -108,18 +113,32 @@ export default function LanguageSwitcher() {
   };
   if (!isMounted) return null; // ✅ Prevents hydration errors
   return (
-    <div className={styles.container}>
-      <div className={styles.box}>
-        <Select
-          options={languageOptions}
-          onChange={changeLanguage}
-          value={languageOptions.find(
-            (option) => option.value === currentLocale
-          )}
-          styles={customStyles}
-          menuPlacement="auto"
-        />
+    <>
+      <div className={styles.container}>
+        {/* <CountdownTimer /> */}
+
+        <FlipClock eventDate="2025-07-30T10:00:00" />
+
+        <div className={styles.box}>
+          <Select
+            options={languageOptions}
+            onChange={changeLanguage}
+            value={languageOptions.find(
+              (option) => option.value === currentLocale
+            )}
+            styles={customStyles}
+            menuPlacement="auto"
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+
+// const languageOptions = [
+//   { value: "am", label: "Am" },
+//   { value: "en", label: "En" },
+//   { value: "ar", label: "Ar" },
+//   { value: "ru", label: "Ru" },
+//   { value: "de", label: "De" },
+// ];

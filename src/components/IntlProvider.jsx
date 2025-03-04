@@ -8,7 +8,7 @@ import { useMessages } from "../lib/i18n";
 export default function IntlProvider({ children }) {
   const pathname = usePathname();
   const router = useRouter();
-  const supportedLocales = ["en", "am", "ar", "ru", "de"];
+  const supportedLocales = ["am", "en", "ar", "ru", "de"];
   const defaultLocale = "en";
 
   // ✅ Function to detect user language from localStorage or browser settings

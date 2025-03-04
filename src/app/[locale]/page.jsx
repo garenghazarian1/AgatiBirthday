@@ -7,10 +7,10 @@ import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
 import RSVPForm from "@/components/RSVPForm/RSVPForm";
 // import QRCodeGenerator from "@/components/QRCodeGenerator/QRCodeGenerator";
 
-console.log("✅ HomePage is rendering...");
-
 export default function HomePage() {
-  const t = useTranslations();
+  const t = useTranslations(); // ✅ Must be called at the top level
+
+  console.log("✅ HomePage is rendering...");
 
   return (
     <>
