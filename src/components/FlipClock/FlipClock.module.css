@@ -6,12 +6,10 @@
   justify-content: center;
   align-items: center;
   position: relative;
-
   /* Original styling */
   background: rgba(0, 0, 0, 0.6);
   gap: 1rem;
   box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
-
   /* Adjust as you like */
   width: 50vw;
   height: 70px;
@@ -161,7 +159,7 @@
   .flipUnitsWrapper {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.1rem;
+    gap: 0.01rem;
   }
 
   .flipCard {

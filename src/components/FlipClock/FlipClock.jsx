@@ -15,10 +15,10 @@ export default function FlipClock({ eventDate }) {
 
       if (difference > 0) {
         return {
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / (1000 * 60)) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
+          d: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          h: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          m: Math.floor((difference / (1000 * 60)) % 60),
+          s: Math.floor((difference / 1000) % 60),
         };
       } else {
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
