@@ -49,6 +49,7 @@
   color: #fff;
   text-align: center;
   margin-bottom: 0.5rem;
+  font-family: Arial, sans-serif;
   font-size: 2rem; /* default if you want it big even before media queries */
   line-height: 1.2;
   max-width: 90%;
@@ -78,6 +79,7 @@
   position: relative;
   width: 40px;
   height: 50px;
+  font-family: Arial, sans-serif;
   font-size: 1rem;
   color: #fff;
   text-align: center;
@@ -118,6 +120,7 @@
   -------------------------------------- */
 .label {
   margin-top: 5px;
+  font-family: Arial, sans-serif;
   font-size: 0.7rem;
   color: gold;
   text-transform: uppercase;
@@ -130,12 +133,14 @@
   /* Make digits larger in fullscreen */
   width: 60px;
   height: 80px;
+  font-family: Arial, sans-serif;
   font-size: 2rem;
 }
 
 .flipClockContainerFull .label {
   /* Increase label size in fullscreen */
   font-size: 1rem;
+  font-family: Arial, sans-serif;
 }
 
 /* Example: If you want the headline even bigger in fullscreen,
@@ -166,11 +171,13 @@
     width: 40px;
     height: 50px;
     font-size: 0.8rem;
+    font-family: Arial, sans-serif;
     gap: 0.3rem;
   }
 
   .label {
     font-size: 0.8rem;
+    font-family: Arial, sans-serif;
   }
 
   /* Fullscreen on mobile */
@@ -182,14 +189,17 @@
   .flipClockContainerFull .flipCard {
     width: 60px;
     height: 65px;
+    font-family: Arial, sans-serif;
     font-size: 1.5rem;
   }
 
   .flipClockContainerFull .label {
+    font-family: Arial, sans-serif;
     font-size: 0.9rem;
   }
 
   .flipClockContainerFull .headline {
+    font-family: Arial, sans-serif;
     font-size: 1.5rem;
   }
 }
