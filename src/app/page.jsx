@@ -6,6 +6,7 @@ import Invitation from "@/components/Invitation/Invitation";
 import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
 import RSVPForm from "@/components/RSVPForm/RSVPForm";
 import { useMessages } from "../lib/i18n";
+import FlipClock from "@/components/FlipClock/FlipClock";
 
 export default function HomePage() {
   const defaultLocale = "am";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <Invitation />
       <CountdownTimer />
       <RSVPForm />
+      <FlipClock eventDate="2025-07-30T10:00:00" />
     </>
   );
 }

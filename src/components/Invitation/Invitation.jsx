@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import styles from "./Invitation.module.css";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 export default function Invitation() {
   const t = useTranslations();
@@ -23,6 +24,8 @@ export default function Invitation() {
 
   return (
     <>
+      <LanguageSwitcher />
+
       <div className={styles.topShadow}></div>
       {/* <div className={styles.bottomShadow}></div> */}
       <div className={styles.topShadow}></div>

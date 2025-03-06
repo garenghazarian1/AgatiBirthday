@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import styles from "./LanguageSwitcher.module.css";
 // import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
-import FlipClock from "@/components/FlipClock/FlipClock";
+// import FlipClock from "@/components/FlipClock/FlipClock";
 
 export default function LanguageSwitcher() {
   const router = useRouter();
@@ -49,7 +49,7 @@ export default function LanguageSwitcher() {
       background: "rgba(0, 0, 0, 0.0)",
       border: "none",
       borderRadius: "none",
-      padding: "0.5rem",
+      // padding: "0.5rem",
       fontSize: "0.8rem",
       color: "#FFD700", // Gold text
 
@@ -81,12 +81,14 @@ export default function LanguageSwitcher() {
 
     option: (provided, state) => ({
       ...provided,
-      padding: "0.8rem",
+      // padding: "0.8rem",
       fontSize: "0.8rem",
       color: state.isFocused ? "#FFD700" : "black", // Gold on focus, Silver default
       fontWeight: state.isFocused ? "bold" : "normal",
       borderRadius: "10px",
-      background: state.isFocused ? "rgba(255, 215, 0, 0.2)" : "transparent",
+      // background: state.isFocused ? "rgba(255, 215, 0, 0.2)" : "transparent",
+      background: state.isFocused ? "rgba(255, 255, 255, 0.8)" : "transparent",
+
       transition: "all 0.3s ease-in-out",
       cursor: "pointer",
     }),
@@ -117,7 +119,7 @@ export default function LanguageSwitcher() {
       <div className={styles.container}>
         {/* <CountdownTimer /> */}
 
-        <FlipClock eventDate="2025-07-30T10:00:00" />
+        {/* <FlipClock eventDate="2025-07-30T10:00:00" /> */}
 
         <div className={styles.box}>
           <Select
