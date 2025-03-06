@@ -6,19 +6,17 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  /* Original styling */
   background: rgba(0, 0, 0, 0.6);
   gap: 1rem;
   box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
-  /* Adjust as you like */
   width: 50vw;
   height: 70px;
-  cursor: pointer; /* so the user knows it's clickable */
+  cursor: pointer;
 }
 
 /* --------------------------------------
      Fullscreen Container
-  -------------------------------------- */
+-------------------------------------- */
 .flipClockContainerFull {
   position: fixed;
   top: 0;
@@ -26,38 +24,32 @@
   width: 100vw;
   height: 100vh;
   z-index: 9999;
-
   display: flex;
-  flex-direction: column; /* so text is above the units */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background: rgba(0, 0, 0, 0.8);
-  gap: 1.5rem; /* a bit more gap in fullscreen */
+  gap: 1.5rem;
   box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
-  cursor: pointer; /* pointer cursor here as well */
+  cursor: pointer;
 }
 
 /* --------------------------------------
-     Headline Text (Shown in Fullscreen)
-  -------------------------------------- */
+     Headline Text (Fullscreen)
+-------------------------------------- */
 .headline {
-  /* Hidden in normal mode, so no default styling needed? 
-       or we can define some base style here if desired. */
-
-  /* We'll definitely want the text bigger in fullscreen. */
   color: #fff;
   text-align: center;
   margin-bottom: 0.5rem;
-  font-family: Arial, sans-serif;
-  font-size: 2rem; /* default if you want it big even before media queries */
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 2rem;
   line-height: 1.2;
   max-width: 90%;
 }
 
 /* --------------------------------------
      Flip Units Wrapper
-  -------------------------------------- */
+-------------------------------------- */
 .flipUnitsWrapper {
   display: flex;
   gap: 1rem;
@@ -65,7 +57,7 @@
 
 /* --------------------------------------
      Flip Unit
-  -------------------------------------- */
+-------------------------------------- */
 .flipUnit {
   display: flex;
   flex-direction: column;
@@ -74,12 +66,12 @@
 
 /* --------------------------------------
      Flip Card (Digits)
-  -------------------------------------- */
+-------------------------------------- */
 .flipCard {
   position: relative;
   width: 40px;
   height: 50px;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   font-size: 1rem;
   color: #fff;
   text-align: center;
@@ -87,6 +79,20 @@
   border-radius: 8px;
   overflow: hidden;
   perspective: 1000px;
+
+  /* Fix iOS font scaling */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Fix Safari rendering issues */
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+
+  /* Ensure number alignment */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 50px;
 }
 
 /* Front & Back Face of the Flip */
@@ -98,9 +104,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
+  font-size: 1rem;
 }
 
 .flipBack {
@@ -117,10 +123,10 @@
 
 /* --------------------------------------
      Label (days, hours, mins, secs)
-  -------------------------------------- */
+-------------------------------------- */
 .label {
   margin-top: 5px;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   font-size: 0.7rem;
   color: gold;
   text-transform: uppercase;
@@ -128,31 +134,25 @@
 
 /* =======================================
      Fullscreen-Specific Style Overrides
-  ========================================= */
+========================================= */
 .flipClockContainerFull .flipCard {
-  /* Make digits larger in fullscreen */
   width: 60px;
   height: 80px;
-  font-family: Arial, sans-serif;
   font-size: 2rem;
+  line-height: 80px;
 }
 
 .flipClockContainerFull .label {
-  /* Increase label size in fullscreen */
   font-size: 1rem;
-  font-family: Arial, sans-serif;
 }
 
-/* Example: If you want the headline even bigger in fullscreen,
-     you could do: 
-  .flipClockContainerFull .headline {
-    font-size: 2.5rem; 
-  }
-  */
+.flipClockContainerFull .headline {
+  font-size: 2.5rem;
+}
 
 /* =======================================
      RESPONSIVE BREAKPOINT EXAMPLE (MOBILE)
-  ========================================= */
+========================================= */
 @media (max-width: 600px) {
   /* Normal container on mobile */
   .flipClockContainer {
@@ -168,16 +168,14 @@
   }
 
   .flipCard {
-    width: 40px;
-    height: 50px;
-    font-size: 0.8rem;
-    font-family: Arial, sans-serif;
-    gap: 0.3rem;
+    width: 45px;
+    height: 55px;
+    font-size: 1rem;
+    line-height: 55px;
   }
 
   .label {
     font-size: 0.8rem;
-    font-family: Arial, sans-serif;
   }
 
   /* Fullscreen on mobile */
@@ -189,17 +187,25 @@
   .flipClockContainerFull .flipCard {
     width: 60px;
     height: 65px;
-    font-family: Arial, sans-serif;
     font-size: 1.5rem;
+    line-height: 65px;
   }
 
   .flipClockContainerFull .label {
-    font-family: Arial, sans-serif;
     font-size: 0.9rem;
   }
 
   .flipClockContainerFull .headline {
-    font-family: Arial, sans-serif;
     font-size: 1.5rem;
+  }
+}
+
+/* =======================================
+     iPhone-Specific Fixes
+========================================= */
+@supports (-webkit-touch-callout: none) {
+  .flipCard {
+    font-smooth: never;
+    -webkit-font-smoothing: none;
   }
 }
