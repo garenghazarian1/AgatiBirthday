@@ -71,10 +71,12 @@ export default function LanguageSwitcher() {
       ...provided,
       display: "flex",
       justifyContent: "center",
-      background: "rgba(255, 255, 255, 0.2)",
+      background: "rgba(255, 255, 255, 0.8)",
       border: "1px solid gold",
       borderRadius: "1rem",
       boxShadow: "0px 0px 10px rgba(255, 215, 0, 0.4)", // Soft gold glow
+      width: "100%",
+      height: "auto",
       // padding: "0.8px",
       zIndex: 1000,
     }),

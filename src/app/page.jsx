@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Invitation from "@/components/Invitation/Invitation";
-import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
+// import CountdownTimer from "@/components/CountdownTimer/CountdownTimer";
 import RSVPForm from "@/components/RSVPForm/RSVPForm";
 import { useMessages } from "../lib/i18n";
 import FlipClock from "@/components/FlipClock/FlipClock";
@@ -25,7 +25,7 @@ export default function HomePage() {
     <>
       <LanguageSwitcher />
       <Invitation />
-      <CountdownTimer />
+      {/* <CountdownTimer /> */}
       <RSVPForm />
       <FlipClock eventDate="2025-07-30T10:00:00" />
     </>

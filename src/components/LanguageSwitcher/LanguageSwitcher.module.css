@@ -14,6 +14,7 @@
     url("/backgroundA.webp") center/cover no-repeat; */
   position: absolute;
   top: 20px;
+  right: 20px;
 }
 
 .h2 {
