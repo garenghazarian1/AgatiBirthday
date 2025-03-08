@@ -1,92 +1,100 @@
 .card {
   width: 100vw;
-  height: 90vh;
-  background: rgba(0, 0, 0, 0.2);
+  min-height: 100vh;
   padding: 1rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  background: url("/backgroundB.jpg") center/cover no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  position: relative; /* important for absolute positioning */
+  overflow-x: hidden;
+}
+
+.invitationImage {
+  position: absolute;
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.decorativeContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 80px 0 20px 0;
 }
 
-.topShadow {
-  width: 100%;
-  height: 20px;
-  position: absolute;
-  background: linear-gradient(
-    to bottom,
-    rgb(196, 151, 62) 0%,
-    /* Pure Gold */ rgba(255, 223, 102, 0.85) 25%,
-    /* Rich Gold */ rgba(255, 230, 153, 0.65) 50%,
-    /* Soft Gold */ rgba(255, 240, 204, 0.15) 85%,
-    /* Light Champagne Gold */ rgba(255, 250, 230, 0) 100%
-      /* Fully Transparent */
-  );
+.decorativeShape {
+  padding: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #f8f4e6);
+  border: 3px solid gold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .bottomShadow {
+.person {
+  border-radius: 50%;
   width: 100%;
-  height: 20px;
-  position: absolute;
-  bottom: -17;
-  background: linear-gradient(
-    to top,
-    rgb(196, 151, 62) 0%,
-     rgba(255, 223, 102, 0.85) 25%,
-     rgba(255, 230, 153, 0.65) 50%,
-     rgba(255, 240, 204, 0.15) 85%,
-    rgba(255, 250, 230, 0) 100%
-      
-  );
-} */
-
-.card:hover {
-  box-shadow: 0 0 30px rgba(255, 182, 193, 0.5); /* Soft pink glow */
+  height: 100%;
+  object-fit: cover;
 }
 
 .textContainer {
-  width: 60%;
-  background: rgba(255, 240, 245, 0.01); /* Soft cream-pink */
+  width: 90%;
+  max-width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
 }
 
 .title {
-  width: 60%;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #b87d6b; /* Rose gold */
-  text-shadow: 2px 2px 8px rgba(255, 182, 193, 0.4);
-  padding: 1rem;
+  color: #b87d6b;
+  text-shadow: 1px 1px 6px rgba(255, 182, 193, 0.4);
+  padding: 0.5rem;
 }
 
 .subtitle {
-  font-size: 1.4rem;
-  color: #8b5e5b; /* Muted warm brown */
+  font-size: 1.2rem;
+  color: #8b5e5b;
+  margin: 0.5rem 0;
 }
 
 .details {
-  font-size: 1.1rem;
-  color: #4a2c2a; /* Deep brown */
+  font-size: 1rem;
+  color: #4a2c2a;
   font-weight: 500;
+  margin-bottom: 5px;
 }
 
 .googleMapsLink {
   display: inline-block;
   margin-top: 5px;
-  color: #b87d6b; /* Rose gold */
+  color: #b87d6b;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  transition: all 0.3s ease-in-out;
 }
 
 .googleMapsLink:hover {
@@ -94,80 +102,29 @@
   text-decoration: underline;
 }
 
-.mapContainer {
-  margin-top: 20px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
-}
-
-.mapIframe {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  border: none;
-}
-
-.rsvpButton {
-  background: linear-gradient(135deg, #ffd700, #ffb347);
-  color: #4a2c2a;
-  font-size: 1.2rem;
-  padding: 12px 25px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 15px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 5px 10px rgba(255, 215, 0, 0.3);
-}
-
-.rsvpButton:hover {
-  background: linear-gradient(135deg, #f5deb3, #ffe4b5);
-  color: #4a2c2a;
-  box-shadow: 0px 5px 15px rgba(255, 182, 193, 0.4);
-}
-
 .loading {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #8b5e5b;
   text-align: center;
   margin-top: 50px;
 }
 
-/* 📱 Responsive Adjustments */
+/* Responsive Media Queries */
 
-@media (max-width: 1160px) {
-  .title {
-    font-size: 1.5rem;
+@media (max-width: 480px) {
+  .invitationImage {
+    width: 60px;
+    top: 5px;
   }
 
-  .subtitle {
-    font-size: 1.2rem;
+  .decorativeContainer {
+    flex-direction: column;
   }
 
-  .details {
-    font-size: 1rem;
+  .decorativeShape {
+    width: 250px;
+    height: 250px;
   }
-
-  .googleMapsLink {
-    font-size: 1rem;
-  }
-
-  .rsvpButton {
-    font-size: 1.2rem;
-    padding: 12px 25px;
-  }
-
-  .mapIframe {
-    height: 300px;
-  }
-}
-@media (max-width: 900px) {
-  /* .textContainer {
-    width: 70%;
-    padding: 1.5rem;
-  } */
 
   .title {
     font-size: 1.2rem;
@@ -177,75 +134,110 @@
     font-size: 1rem;
   }
 
-  .details {
-    font-size: 1rem;
-  }
+  .details,
   .googleMapsLink {
-    font-size: 1rem;
+    font-size: 0.85rem;
   }
 
-  .rsvpButton {
-    font-size: 1rem;
-    padding: 12px 25px;
-  }
-
-  .mapIframe {
-    height: 300px;
-  }
-}
-
-@media (max-width: 760px) {
-  .title {
-    font-size: 1rem;
-  }
-
-  .subtitle {
-    font-size: 0.8rem;
-  }
-
-  .details {
-    font-size: 0.8rem;
-  }
-  .googleMapsLink {
-    font-size: 0.8rem;
-  }
-
-  .rsvpButton {
-    font-size: 0.8rem;
-    padding: 12px 25px;
-  }
-
-  .mapIframe {
-    height: 300px;
-  }
-}
-
-@media (max-width: 650px) {
   .textContainer {
-    width: 70%;
-    padding: 0.5rem;
+    width: 95%;
+    padding: 0.8rem;
   }
+}
+
+@media (max-width: 375px) {
+  .decorativeContainer {
+    gap: 8px;
+    margin: 60px 0 15px 0;
+  }
+
+  .decorativeShape {
+    width: 80px;
+    height: 80px;
+  }
+
   .title {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .subtitle {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
   }
 
-  .details {
-    font-size: 0.7rem;
-  }
+  .details,
   .googleMapsLink {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
+}
 
-  .rsvpButton {
-    font-size: 0.7rem;
-    padding: 12px 25px;
-  }
+.celebrationBackground {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #fff8f0, #ffe6e2);
+}
 
-  .mapIframe {
-    height: 300px;
+.celebrationBackground::before,
+.celebrationBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(white 2px, transparent 2px),
+    radial-gradient(gold 2px, transparent 2px),
+    radial-gradient(pink 2px, transparent 2px);
+  background-size: 200px 200px;
+  background-position: 0 0, 50px 50px, 100px 100px;
+  animation: sparkle 10s infinite linear;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.celebrationBackground::before,
+.celebrationBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(white 2px, transparent 2px),
+    radial-gradient(gold 2px, transparent 2px),
+    radial-gradient(pink 2px, transparent 2px);
+  background-size: 200px 200px;
+  background-position: 0 0, 500px 50px, 200px 400px;
+  animation: sparkle 10s infinite linear;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
   }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+  }
+}
+
+.celebrationBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 20% 30%, #ffd700, transparent),
+    radial-gradient(circle at 80% 20%, pink, transparent),
+    radial-gradient(circle at 50% 80%, white, transparent);
+  background-size: 200px 200px, 150px 150px, 180px 180px;
+  background-repeat: no-repeat;
+  animation: sparkle 5s infinite ease-in-out;
+  pointer-events: none;
 }

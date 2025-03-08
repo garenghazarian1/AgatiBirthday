@@ -1,10 +1,10 @@
 {
   "invitationTitle": "You're Invited to Ani & Agati's Baptism!",
-  "invitationSubtitle": "Join us for a special day full of love and blessings.",
-  "invitationDetails": "📅 Date: Wednesday, July 30th, 2025",
-  "invitationLocation": "📍 Location: Etchmiadzin Cathedral, Armenia",
-  "googleMapsLink": "📍 View Location on Google Maps",
-  "rsvpTitle": "🎉 RSVP to Ani & Agati's Baptism",
+  "invitationSubtitle": "Join us in celebrating a beautiful milestone filled with love, joy, and heartfelt blessings.",
+  "invitationDetails": "Date: Wednesday, July 30th, 2025",
+  "invitationLocation": "Location: Etchmiadzin Cathedral, Armenia",
+  "googleMapsLink": "View Location on Google Maps",
+  "rsvpTitle": "RSVP to Ani & Agati's Baptism",
   "rsvpMessage": "Thank you for your RSVP! We are excited to see you!",
   "rsvpButton": "Confirm Your Attendance",
   "rsvpForm": {
@@ -17,12 +17,12 @@
   "errorMessages": "An error occurred. Please try again.",
   "invitationTitleA": "Invitation to Ani & Agati's Baptism",
   "dear": "Dear",
-  "invitationMessage": "We are delighted to invite you to this special occasion.",
+  "invitationMessage": "We are delighted to invite you to this special occasion as Ani and Agati receive the holy sacrament of baptism, marking the beginning of their spiritual journey. Your presence will add warmth and joy to this memorable day.",
   "email": "Email",
   "guests": "Guests",
   "date": "Date",
   "location": "Location",
-  "invitationClosing": "We look forward to celebrating this moment with you!",
+  "invitationClosing": "We look forward to celebrating this cherished moment with you!",
   "pdfGenerating": "Generating PDF...",
-  "pdfDownloadButton": "📄 Download Your Invitation"
+  "pdfDownloadButton": "Download Your Invitation"
 }
