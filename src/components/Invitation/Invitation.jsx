@@ -2,19 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import Image from "next/image";
 import styles from "./Invitation.module.css";
-import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 export default function Invitation() {
   const t = useTranslations();
-  const [isMounted, setIsMounted] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(true);
   const [currentImage, setCurrentImage] = useState("/ani.jpg");
   const [fade, setFade] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    document.body.style.overflow = "hidden"; // ✅ Disable scroll during animation
+
+    setTimeout(() => {
+      setIsAnimating(false); // ✅ Remove overlay after animation completes
+      document.body.style.overflow = "auto"; // ✅ Restore scroll
+    }, 2000); // ✅ Matches the animation duration
   }, []);
 
   useEffect(() => {
@@ -31,26 +34,29 @@ export default function Invitation() {
     return () => clearInterval(imageInterval);
   }, []);
 
-  if (!isMounted) {
-    return <p className={styles.loading}>Loading invitation...</p>;
-  }
-
   return (
     <>
-      <div className={styles.celebrationBackground}>
-        <LanguageSwitcher />
+      {/* Overlay to prevent white screen */}
+      {isAnimating && <div className={styles.loadingOverlay}></div>}
 
-        <div className={`${styles.card} `}>
+      <div className={styles.celebrationBackground}>
+        <div className={`${styles.card} ${styles.cardAnimate}`}>
+          {/* Image with 3D Effect */}
           <Image
             src="/001.png"
             alt="Cross"
             width={500}
             height={500}
-            className={styles.invitationImage}
+            className={`${styles.invitationImage} ${styles.imageAnimate}`}
             priority
           />
-          <h2 className={styles.title}>{t("cardTitle")}</h2>
-          <div className={styles.decorativeContainer}>
+
+          {/* Title Sliding from Left */}
+          <h2 className={`${styles.title} ${styles.titleAnimateLeft}`}>
+            {t("cardTitle")}
+          </h2>
+
+          <div className={`${styles.decorativeContainer} ${styles.fadeIn}`}>
             <div className={styles.decorativeShape}>
               <Image
                 src={currentImage}
@@ -64,27 +70,11 @@ export default function Invitation() {
               />
             </div>
           </div>
-          <h2 className={styles.title}>{t("cardSubtitle")}</h2>
 
-          {/* <div className={styles.textContainer}>
-          <h2 className={styles.title}>{t("invitationTitle")}</h2>
-
-            <p className={styles.subtitle}>{t("invitationSubtitle")}</p>
-            <p className={styles.details}>{t("invitationMessage")}</p>
-
-            <p className={styles.details}>{t("invitationDetails")}</p>
-            <p className={styles.details}>{t("invitationLocation")}</p>
-
-            <Link
-              href="https://www.google.com/maps?q=576R+PGF,+Vagharshapat,+Armenia"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.googleMapsLink}
-              aria-label="View location on Google Maps"
-            >
-              {t("googleMapsLink")}
-            </Link>
-          </div> */}
+          {/* Subtitle Sliding from Right */}
+          <h2 className={`${styles.title} ${styles.titleAnimateRight}`}>
+            {t("cardSubtitle")}
+          </h2>
         </div>
       </div>
     </>

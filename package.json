@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.2.2",
+    "framer-motion": "^12.4.10",
     "mongodb": "^6.14.0",
     "mongoose": "^8.11.0",
     "next": "15.2.0",

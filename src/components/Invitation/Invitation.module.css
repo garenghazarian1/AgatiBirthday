@@ -1,6 +1,6 @@
 .card {
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -10,7 +10,7 @@
 }
 
 .invitationImage {
-  width: 150px;
+  width: 100px;
   height: auto;
 }
 
@@ -24,14 +24,13 @@
   overflow: hidden;
   width: 360px;
   height: 360px;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .decorativeShape {
   border-radius: 50%;
   background: rgba(203, 180, 2, 0.2);
-  border: 3px solid gold;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 5px solid rgb(249, 180, 7);
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -60,111 +59,73 @@
   font-size: 200%;
   font-family: "Dzeragir", sans-serif;
   font-weight: 400;
-  color: #0c0600;
+  color: #e67300;
   text-shadow: 1px 1px 6px rgba(255, 182, 193, 0.4);
   margin: 1rem 0rem;
 }
 
-.textContainer {
-  width: 90%;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 1rem;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: #8b5e5b;
-  margin: 0.5rem 0;
-}
-
-.details {
-  font-size: 1rem;
-  color: #4a2c2a;
-  font-weight: 500;
-  margin-bottom: 5px;
-}
-
-.googleMapsLink {
-  display: inline-block;
-  margin-top: 5px;
-  color: #b87d6b;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: bold;
-}
-
-.googleMapsLink:hover {
-  color: #8b5e5b;
-  text-decoration: underline;
-}
-
-.loading {
-  font-size: 1.2rem;
-  color: #8b5e5b;
-  text-align: center;
-  margin-top: 50px;
-}
-
-/* Responsive Media Queries */
-
-@media (max-width: 480px) {
-  /* .decorativeContainer {
-    margin-top: 2rem;
-  }
-
-  .decorativeShape {
-    width: 250px;
-    height: 250px;
-  } */
-
-  /* .title {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-  } */
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .details,
-  .googleMapsLink {
-    font-size: 0.85rem;
-  }
-
-  .textContainer {
-    width: 95%;
-    padding: 0.8rem;
-  }
-}
-
-@media (max-width: 375px) {
-  /* .decorativeShape {
-    width: 80px;
-    height: 80px;
-  } */
-
-  /* .title {
-    font-size: 1rem;
-  } */
-
-  .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .details,
-  .googleMapsLink {
-    font-size: 0.75rem;
-  }
-}
-
 .celebrationBackground {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: 100%;
+  background: radial-gradient(circle, #fff8f0, #ffe6e2);
+  z-index: -10;
+}
+
+/* Subtle Golden Cross Pattern */
+.celebrationBackground::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/001.png"),
+    /* Add a subtle cross pattern */
+      radial-gradient(circle at 50% 50%, rgba(255, 223, 80, 0.2), transparent);
+  background-size: 200px 200px, cover;
+  /* background-repeat: repeat, no-repeat; */
+  background-position: center, center;
+  opacity: 0.1;
+  z-index: -9;
+}
+
+/* Glowing Holy Effect */
+.celebrationBackground::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 20% 30%,
+      rgba(255, 215, 0, 0.3),
+      transparent
+    ),
+    radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.3), transparent),
+    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 200px 200px, 150px 150px, 180px 180px;
+  background-repeat: no-repeat;
+  animation: holyGlow 8s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* Sparkle Animation */
+@keyframes holyGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* .celebrationBackground {
   position: relative;
   overflow: hidden;
   width: 100vw;
@@ -235,4 +196,108 @@
   background-repeat: no-repeat;
   animation: sparkle 5s infinite ease-in-out;
   pointer-events: none;
+} */
+
+/* Modern 3D animation with smooth transitions */
+/* Hide the page before animation starts */
+.hiddenPage {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Ensure page fades in with animation */
+.fadeInPage {
+  visibility: visible;
+  opacity: 1;
+  animation: fadeInPage 1s ease-in-out;
+}
+
+/* Modern 3D animation with smooth transitions */
+.cardAnimate {
+  animation: fadeInScale 1.2s ease-in-out;
+}
+
+/* Image with depth effect */
+.imageAnimate {
+  animation: rotate3D 1.5s ease-in-out;
+}
+
+/* Title sliding from left */
+.titleAnimateLeft {
+  animation: slideFromLeft 1.2s ease-out;
+}
+
+/* Subtitle sliding from right */
+.titleAnimateRight {
+  animation: slideFromRight 1.2s ease-out;
+}
+
+/* 3D Perspective Container */
+.celebrationBackground {
+  perspective: 1200px;
+}
+
+/* Image Swap Effect */
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate3D {
+  from {
+    transform: rotateY(-60deg) scale(0.9);
+    opacity: 0.6;
+  }
+  to {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) skewX(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px) skewX(10deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+  }
 }

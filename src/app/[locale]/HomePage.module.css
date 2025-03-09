@@ -1,0 +1,16 @@
+.scrollContainer {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* Enables snap scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+.section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start; /* Stops scroll at the start of each section */
+}
