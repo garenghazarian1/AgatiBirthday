@@ -1,3 +1,4 @@
+/* Base styling */
 .card {
   width: 100vw;
   height: 100vh;
@@ -10,15 +11,16 @@
 }
 
 .invitationImage {
-  width: 100px;
+  width: 120px;
   height: auto;
+  will-change: transform, opacity;
 }
 
+/* Decorative container */
 .decorativeContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   background: url("/001.png");
   background-size: cover;
   overflow: hidden;
@@ -44,16 +46,6 @@
   object-fit: cover;
 }
 
-.fadeIn {
-  opacity: 1;
-  transition: opacity 0.5s ease-in;
-}
-
-.fadeOut {
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-
 .title {
   text-align: center;
   font-size: 200%;
@@ -64,240 +56,23 @@
   margin: 1rem 0rem;
 }
 
+/* Background effects */
 .celebrationBackground {
   position: relative;
   overflow: hidden;
   width: 100vw;
   height: 100%;
   background: radial-gradient(circle, #fff8f0, #ffe6e2);
-  z-index: -10;
-}
-
-/* Subtle Golden Cross Pattern */
-.celebrationBackground::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/001.png"),
-    /* Add a subtle cross pattern */
-      radial-gradient(circle at 50% 50%, rgba(255, 223, 80, 0.2), transparent);
-  background-size: 200px 200px, cover;
-  /* background-repeat: repeat, no-repeat; */
-  background-position: center, center;
-  opacity: 0.1;
-  z-index: -9;
-}
-
-/* Glowing Holy Effect */
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(
-      circle at 20% 30%,
-      rgba(255, 215, 0, 0.3),
-      transparent
-    ),
-    radial-gradient(circle at 80% 20%, rgba(255, 182, 193, 0.3), transparent),
-    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.3), transparent);
-  background-size: 200px 200px, 150px 150px, 180px 180px;
-  background-repeat: no-repeat;
-  animation: holyGlow 8s infinite ease-in-out;
-  pointer-events: none;
-}
-
-/* Sparkle Animation */
-@keyframes holyGlow {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(0.9);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-}
-
-/* .celebrationBackground {
-  position: relative;
-  overflow: hidden;
-  width: 100vw;
-  height: 100%;
-  background: radial-gradient(circle, #fff8f0, #ffe6e2);
-  z-index: -10;
-}
-
-.celebrationBackground::before,
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(white 2px, transparent 2px),
-    radial-gradient(gold 2px, transparent 2px),
-    radial-gradient(pink 2px, transparent 2px);
-  background-size: 200px 200px;
-  background-position: 0 0, 50px 50px, 100px 100px;
-  animation: sparkle 10s infinite linear;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.celebrationBackground::before,
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(white 2px, transparent 2px),
-    radial-gradient(gold 2px, transparent 2px),
-    radial-gradient(pink 2px, transparent 2px);
-  background-size: 200px 200px;
-  background-position: 0 0, 500px 50px, 200px 400px;
-  animation: sparkle 10s infinite linear;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.2);
-  }
-}
-
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle at 20% 30%, #ffd700, transparent),
-    radial-gradient(circle at 80% 20%, pink, transparent),
-    radial-gradient(circle at 50% 80%, white, transparent);
-  background-size: 200px 200px, 150px 150px, 180px 180px;
-  background-repeat: no-repeat;
-  animation: sparkle 5s infinite ease-in-out;
-  pointer-events: none;
-} */
-
-/* Modern 3D animation with smooth transitions */
-/* Hide the page before animation starts */
-.hiddenPage {
-  visibility: hidden;
-  opacity: 0;
-}
-
-/* Ensure page fades in with animation */
-.fadeInPage {
-  visibility: visible;
-  opacity: 1;
-  animation: fadeInPage 1s ease-in-out;
-}
-
-/* Modern 3D animation with smooth transitions */
-.cardAnimate {
-  animation: fadeInScale 1.2s ease-in-out;
-}
-
-/* Image with depth effect */
-.imageAnimate {
-  animation: rotate3D 1.5s ease-in-out;
-}
-
-/* Title sliding from left */
-.titleAnimateLeft {
-  animation: slideFromLeft 1.2s ease-out;
-}
-
-/* Subtitle sliding from right */
-.titleAnimateRight {
-  animation: slideFromRight 1.2s ease-out;
-}
-
-/* 3D Perspective Container */
-.celebrationBackground {
   perspective: 1200px;
 }
 
-/* Image Swap Effect */
+/* Fade effects for image transition */
 .fadeOut {
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-out;
 }
 
 .fadeIn {
   opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* Animations */
-@keyframes fadeInPage {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes rotate3D {
-  from {
-    transform: rotateY(-60deg) scale(0.9);
-    opacity: 0.6;
-  }
-  to {
-    transform: rotateY(0deg) scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes slideFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-100px) skewX(-10deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) skewX(0);
-  }
-}
-
-@keyframes slideFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(100px) skewX(10deg);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0) skewX(0);
-  }
+  transition: opacity 0.5s ease-in;
 }
