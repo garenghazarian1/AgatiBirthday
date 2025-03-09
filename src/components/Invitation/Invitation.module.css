@@ -1,29 +1,17 @@
 .card {
   width: 100vw;
-  min-height: 100vh;
-  padding: 1rem;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  position: relative; /* important for absolute positioning */
   overflow-x: hidden;
+  margin-top: 1rem;
 }
 
 .invitationImage {
-  position: absolute;
-  /* width: 150px;
-  height: auto; */
-  width: 500px;
+  width: 150px;
   height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-  top: 2.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: -1;
 }
 
 .decorativeContainer {
@@ -31,18 +19,20 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 4rem;
+  background: url("/001.png");
+  background-size: cover;
+  overflow: hidden;
+  width: 360px;
+  height: 360px;
+  margin-top: 2rem;
 }
 
 .decorativeShape {
-  padding: 5px;
   border-radius: 50%;
   background: rgba(203, 180, 2, 0.2);
   border: 3px solid gold;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  width: 400px;
-  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,8 +40,8 @@
 
 .person {
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  width: 290px;
+  height: 290px;
   object-fit: cover;
 }
 
@@ -65,6 +55,16 @@
   transition: opacity 0.5s ease-out;
 }
 
+.title {
+  text-align: center;
+  font-size: 200%;
+  font-family: "Dzeragir", sans-serif;
+  font-weight: 400;
+  color: #0c0600;
+  text-shadow: 1px 1px 6px rgba(255, 182, 193, 0.4);
+  margin: 1rem 0rem;
+}
+
 .textContainer {
   width: 90%;
   max-width: 500px;
@@ -76,15 +76,6 @@
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   margin-top: 10px;
-}
-
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #b87d6b;
-  text-shadow: 1px 1px 6px rgba(255, 182, 193, 0.4);
-  padding: 0.5rem;
-  margin-top: 3rem;
 }
 
 .subtitle {
@@ -124,28 +115,19 @@
 /* Responsive Media Queries */
 
 @media (max-width: 480px) {
-  /* .invitationImage {
-    width: 60px;
-    top: 5px;
-  } */
-  .decorativeContainer {
+  /* .decorativeContainer {
     margin-top: 2rem;
   }
 
-  .invitationImage {
-    width: 300px;
-    height: 300px;
-    top: 4%;
-  }
   .decorativeShape {
     width: 250px;
     height: 250px;
-  }
+  } */
 
-  .title {
+  /* .title {
     font-size: 1.2rem;
     margin-top: 2rem;
-  }
+  } */
 
   .subtitle {
     font-size: 1rem;
@@ -163,20 +145,14 @@
 }
 
 @media (max-width: 375px) {
-  .invitationImage {
-    width: 85px;
-    height: 85px;
-    top: 0%;
-  }
-
-  .decorativeShape {
+  /* .decorativeShape {
     width: 80px;
     height: 80px;
-  }
+  } */
 
-  .title {
+  /* .title {
     font-size: 1rem;
-  }
+  } */
 
   .subtitle {
     font-size: 0.9rem;
@@ -192,7 +168,7 @@
   position: relative;
   overflow: hidden;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   background: radial-gradient(circle, #fff8f0, #ffe6e2);
   z-index: -10;
 }

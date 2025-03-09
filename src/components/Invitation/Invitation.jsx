@@ -40,7 +40,16 @@ export default function Invitation() {
       <div className={styles.celebrationBackground}>
         <LanguageSwitcher />
 
-        <div className={`${styles.card} ${styles.shimmerBorder}`}>
+        <div className={`${styles.card} `}>
+          <Image
+            src="/001.png"
+            alt="Cross"
+            width={500}
+            height={500}
+            className={styles.invitationImage}
+            priority
+          />
+          <h2 className={styles.title}>{t("cardTitle")}</h2>
           <div className={styles.decorativeContainer}>
             <div className={styles.decorativeShape}>
               <Image
@@ -54,18 +63,12 @@ export default function Invitation() {
                 priority
               />
             </div>
-            <Image
-              src="/001.png"
-              alt="Cross"
-              width={500}
-              height={500}
-              className={styles.invitationImage}
-              priority
-            />
           </div>
+          <h2 className={styles.title}>{t("cardSubtitle")}</h2>
 
-          <h1 className={styles.title}>{t("invitationTitle")}</h1>
-          <div className={styles.textContainer}>
+          {/* <div className={styles.textContainer}>
+          <h2 className={styles.title}>{t("invitationTitle")}</h2>
+
             <p className={styles.subtitle}>{t("invitationSubtitle")}</p>
             <p className={styles.details}>{t("invitationMessage")}</p>
 
@@ -81,7 +84,7 @@ export default function Invitation() {
             >
               {t("googleMapsLink")}
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

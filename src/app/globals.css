@@ -6,6 +6,19 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Vrdznagir";
+  src: url("/fonts/Vrdznagir.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Dzeragir";
+  src: url("/fonts/SHK_Dzeragir.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   width: 100vw;
   height: 100%;

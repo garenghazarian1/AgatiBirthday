@@ -1,11 +1,13 @@
 {
-  "invitationTitle": "ندعوكم بمحبة إلى معمودية آني وآغاتي!",
+  "cardTitle": "دعوة معمودية",
+  "cardSubtitle": "آني وآغاتي",
+  "invitationTitle": "ندعوكم بمحبة إلى معمودية آني وآغاتي",
   "invitationSubtitle": "شاركونا الاحتفال بهذه المناسبة الرائعة المليئة بالمحبة والفرح والبركات الصادقة.",
   "invitationDetails": "التاريخ: الأربعاء، 30 يوليو، 2025",
   "invitationLocation": "المكان: كاتدرائية إتشميادزين، أرمينيا",
   "googleMapsLink": "عرض الموقع على Google Maps",
   "rsvpTitle": "تأكيد الحضور لمعمودية آني وآغاتي",
-  "rsvpMessage": "شكراً لتأكيد حضوركم! نحن متحمسون لرؤيتكم!",
+  "rsvpMessage": "شكراً لتأكيد حضوركم نحن متحمسون لرؤيتكم",
   "rsvpButton": "تأكيد حضورك",
   "rsvpForm": {
     "namePlaceholder": "اسمك",
