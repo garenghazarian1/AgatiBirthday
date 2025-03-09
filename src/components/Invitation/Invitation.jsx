@@ -10,9 +10,25 @@ import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 export default function Invitation() {
   const t = useTranslations();
   const [isMounted, setIsMounted] = useState(false);
+  const [currentImage, setCurrentImage] = useState("/ani.jpg");
+  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setFade(true);
+      setTimeout(() => {
+        setCurrentImage((prevImage) =>
+          prevImage === "/ani.jpg" ? "/agati.jpg" : "/ani.jpg"
+        );
+        setFade(false);
+      }, 500);
+    }, 5000);
+
+    return () => clearInterval(imageInterval);
   }, []);
 
   if (!isMounted) {
@@ -25,36 +41,27 @@ export default function Invitation() {
         <LanguageSwitcher />
 
         <div className={`${styles.card} ${styles.shimmerBorder}`}>
-          <Image
-            src="/001.png"
-            alt="kross"
-            width={500}
-            height={500}
-            className={styles.invitationImage}
-            priority
-          />
           <div className={styles.decorativeContainer}>
             <div className={styles.decorativeShape}>
               <Image
-                src="/ani.jpg"
-                alt="Ani"
+                src={currentImage}
+                alt="Ani or Agati"
                 width={500}
                 height={500}
-                className={styles.person}
+                className={`${styles.person} ${
+                  fade ? styles.fadeOut : styles.fadeIn
+                }`}
                 priority
               />
             </div>
-
-            <div className={styles.decorativeShape}>
-              <Image
-                src="/agati.jpg"
-                alt="Agati"
-                width={500}
-                height={500}
-                className={styles.person}
-                priority
-              />
-            </div>
+            <Image
+              src="/001.png"
+              alt="Cross"
+              width={500}
+              height={500}
+              className={styles.invitationImage}
+              priority
+            />
           </div>
 
           <h1 className={styles.title}>{t("invitationTitle")}</h1>
@@ -65,7 +72,6 @@ export default function Invitation() {
             <p className={styles.details}>{t("invitationDetails")}</p>
             <p className={styles.details}>{t("invitationLocation")}</p>
 
-            {/* Google Maps Link */}
             <Link
               href="https://www.google.com/maps?q=576R+PGF,+Vagharshapat,+Armenia"
               target="_blank"

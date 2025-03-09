@@ -14,29 +14,30 @@
 
 .invitationImage {
   position: absolute;
-  width: 150px;
+  /* width: 150px;
+  height: auto; */
+  width: 500px;
   height: auto;
   object-fit: cover;
   border-radius: 10px;
-  top: 10px;
+  top: 2.5%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: -1;
 }
 
 .decorativeContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   flex-wrap: wrap;
-  margin: 80px 0 20px 0;
+  margin-top: 4rem;
 }
 
 .decorativeShape {
   padding: 5px;
   border-radius: 50%;
-  background: radial-gradient(circle, #fff, #f8f4e6);
+  background: rgba(203, 180, 2, 0.2);
   border: 3px solid gold;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -52,6 +53,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.fadeIn {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
 
 .textContainer {
@@ -73,6 +84,7 @@
   color: #b87d6b;
   text-shadow: 1px 1px 6px rgba(255, 182, 193, 0.4);
   padding: 0.5rem;
+  margin-top: 3rem;
 }
 
 .subtitle {
@@ -112,15 +124,19 @@
 /* Responsive Media Queries */
 
 @media (max-width: 480px) {
-  .invitationImage {
+  /* .invitationImage {
     width: 60px;
     top: 5px;
-  }
-
+  } */
   .decorativeContainer {
-    flex-direction: column;
+    margin-top: 2rem;
   }
 
+  .invitationImage {
+    width: 300px;
+    height: 300px;
+    top: 4%;
+  }
   .decorativeShape {
     width: 250px;
     height: 250px;
@@ -128,6 +144,7 @@
 
   .title {
     font-size: 1.2rem;
+    margin-top: 2rem;
   }
 
   .subtitle {
@@ -146,9 +163,10 @@
 }
 
 @media (max-width: 375px) {
-  .decorativeContainer {
-    gap: 8px;
-    margin: 60px 0 15px 0;
+  .invitationImage {
+    width: 85px;
+    height: 85px;
+    top: 0%;
   }
 
   .decorativeShape {
@@ -176,6 +194,7 @@
   width: 100vw;
   height: 100vh;
   background: radial-gradient(circle, #fff8f0, #ffe6e2);
+  z-index: -10;
 }
 
 .celebrationBackground::before,
