@@ -1,4 +1,4 @@
-/* Main container (full-screen, blurred background) */
+/* Full-screen container */
 .container {
   width: 100vw;
   height: 100vh;
@@ -7,7 +7,7 @@
   align-items: center;
   flex-direction: column;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   position: relative;
   opacity: 0;
   transform: translateY(50px);
@@ -31,65 +31,82 @@
   z-index: -20;
 }
 
-/* Apply animation when section is visible */
+/* Make the form appear smoothly */
 .visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Title Styling */
+/* Required Fields Notice */
+.requiredNotice {
+  font-size: 0.8rem;
+  text-align: center;
+  color: #d9534f;
+  margin-bottom: 0.5rem;
+}
+
+/* Title */
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #7d4a48;
   text-align: center;
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
+  margin: 0.5rem 0rem;
 }
 
-.visible .title {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Form Styling */
+/* Form */
 .form {
   width: 90%;
-  max-width: 400px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 15px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+  /* backdrop-filter: blur(8px); */
 }
 
-.visible .form {
-  opacity: 1;
-  transform: translateY(0);
+/* Labels */
+.label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #5a322f;
+  margin-top: 10px;
+}
+
+/* Required Star */
+.required {
+  color: #d9534f;
 }
 
 /* Input Fields */
 .input {
   width: 100%;
-  padding: 12px;
-  margin: 10px 0;
+  padding: 8px;
+  margin-top: 5px;
   border-radius: 8px;
   border: 2px solid #b87d6b;
-  font-size: 1rem;
+  font-size: 0.8rem;
   transition: all 0.3s ease-in-out;
-  outline: none;
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
   border-color: #7d4a48;
   box-shadow: 0 0 8px rgba(125, 74, 72, 0.5);
+}
+
+/* Textarea */
+.textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 2px solid #b87d6b;
+  font-size: 0.8rem;
+  resize: vertical;
 }
 
 /* Submit Button */
@@ -98,80 +115,28 @@
   padding: 12px;
   background-color: #b87d6b;
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .button:hover {
   background-color: #7d4a48;
 }
 
-.button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Error Message */
-.error {
-  color: #d9534f;
-  font-size: 0.9rem;
-  margin-top: 10px;
-}
-
-/* Success Confirmation */
-.confirmationContainer {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1s ease-out 0.8s, transform 1s ease-out 0.8s;
-}
-
-.visible .confirmationContainer {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.confirmation {
-  font-size: 1.2rem;
-  color: #7d4a48;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-/* Responsive Adjustments */
+/* Responsive */
 @media (max-width: 480px) {
   .form {
     width: 95%;
-    padding: 1rem;
   }
 
   .title {
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
-
-  .input,
-  .button {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 375px) {
-  .form {
-    width: 98%;
-    padding: 0.8rem;
-  }
-
-  .title {
-    font-size: 1.4rem;
-  }
-
-  .input,
-  .button {
-    font-size: 0.85rem;
+  .label {
+    font-size: 0.8rem;
   }
 }

@@ -9,7 +9,7 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 
-export default function InvitationPDF({ name, email, guests }) {
+export default function InvitationPDF({ name, email, phone, guests, comment }) {
   const styles = StyleSheet.create({
     page: { padding: 40, fontSize: 14, backgroundColor: "#f8f8f8" },
     section: {
@@ -46,8 +46,7 @@ export default function InvitationPDF({ name, email, guests }) {
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <Text style={styles.title}>
-            {" "}
-            Invitation to Ani & Agati&apos;s Baptism{" "}
+            Invitation to Ani & Agati&apos;s Baptism
           </Text>
           <Text style={styles.text}>
             Dear <Text style={styles.highlight}>{name}</Text>,
@@ -56,22 +55,28 @@ export default function InvitationPDF({ name, email, guests }) {
             We are delighted to invite you to this special occasion.
           </Text>
           <Text style={styles.text}>
-            {" "}
-            Email: <Text style={styles.highlight}>{email}</Text>
+            Phone: <Text style={styles.highlight}>{phone}</Text>
           </Text>
+          {email && (
+            <Text style={styles.text}>
+              Email: <Text style={styles.highlight}>{email}</Text>
+            </Text>
+          )}
           <Text style={styles.text}>
-            {" "}
             Guests: <Text style={styles.highlight}>{guests}</Text>
           </Text>
           <Text style={styles.text}>
-            {" "}
             Date: <Text style={styles.highlight}>July 30, 2025</Text>
           </Text>
           <Text style={styles.text}>
-            {" "}
             Location:{" "}
             <Text style={styles.highlight}>Etchmiadzin Cathedral, Armenia</Text>
           </Text>
+          {comment && (
+            <Text style={styles.text}>
+              Comment: <Text style={styles.highlight}>{comment}</Text>
+            </Text>
+          )}
           <Text style={styles.footer}>
             We look forward to celebrating this moment with you!
           </Text>

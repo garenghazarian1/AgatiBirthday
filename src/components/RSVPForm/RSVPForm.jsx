@@ -9,7 +9,9 @@ export default function RSVPForm() {
   const t = useTranslations();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [guests, setGuests] = useState("");
+  const [comment, setComment] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -42,7 +44,7 @@ export default function RSVPForm() {
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, guests }),
+        body: JSON.stringify({ name, email, phone, guests, comment }),
       });
 
       if (!response.ok) {
@@ -64,9 +66,14 @@ export default function RSVPForm() {
       className={`${styles.container} ${isVisible ? styles.visible : ""}`}
     >
       <h2 className={styles.title}>{t("rsvpTitle")}</h2>
+      <p className={styles.requiredNotice}>* {t("requiredFieldsNotice")}</p>
 
       {!submitted ? (
         <form onSubmit={handleSubmit} className={styles.form}>
+          {/* Name Field (Required) */}
+          <label className={styles.label}>
+            {t("rsvpForm.nameLabel")} <span className={styles.required}>*</span>
+          </label>
           <input
             type="text"
             placeholder={t("rsvpForm.namePlaceholder")}
@@ -75,14 +82,36 @@ export default function RSVPForm() {
             className={styles.input}
             required
           />
+
+          {/* Phone Number Field (Required) */}
+          <label className={styles.label}>
+            {t("rsvpForm.phoneLabel")}{" "}
+            <span className={styles.required}>*</span>
+          </label>
+          <input
+            type="tel"
+            placeholder={t("rsvpForm.phonePlaceholder")}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className={styles.input}
+            required
+          />
+
+          {/* Email Field (Optional) */}
+          <label className={styles.label}>{t("rsvpForm.emailLabel")}</label>
           <input
             type="email"
             placeholder={t("rsvpForm.emailPlaceholder")}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className={styles.input}
-            required
           />
+
+          {/* Guests Number Field (Required) */}
+          <label className={styles.label}>
+            {t("rsvpForm.guestsLabel")}{" "}
+            <span className={styles.required}>*</span>
+          </label>
           <input
             type="number"
             placeholder={t("rsvpForm.guestsPlaceholder")}
@@ -91,15 +120,33 @@ export default function RSVPForm() {
             className={styles.input}
             required
           />
+
+          {/* Comment Field (Optional) */}
+          <label className={styles.label}>{t("rsvpForm.commentLabel")}</label>
+          <textarea
+            placeholder={t("rsvpForm.commentPlaceholder")}
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+            className={styles.textarea}
+          ></textarea>
+
+          {/* Submit Button */}
           <button type="submit" className={styles.button} disabled={loading}>
             {loading ? t("rsvpForm.submitting") : t("rsvpForm.submitButton")}
           </button>
+
           {error && <p className={styles.error}>{error}</p>}
         </form>
       ) : (
         <div className={styles.confirmationContainer}>
           <p className={styles.confirmation}>✅ {t("rsvpMessage")}</p>
-          <RSVPInvitationPDF name={name} email={email} guests={guests} />
+          <RSVPInvitationPDF
+            name={name}
+            email={email}
+            phone={phone}
+            guests={guests}
+            comment={comment}
+          />
         </div>
       )}
     </div>

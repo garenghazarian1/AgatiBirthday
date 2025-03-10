@@ -64,7 +64,7 @@
   margin: 1.5rem 0;
   text-align: center;
   background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
+  /* backdrop-filter: blur(8px); */
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
