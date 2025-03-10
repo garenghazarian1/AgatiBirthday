@@ -1,67 +1,150 @@
-/* Admin Dashboard Container */
+/* ✅ General Styling */
 .container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 223, 186, 0.6)
-  );
-  border: 3px solid gold;
-  border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(255, 223, 186, 0.4);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  overflow-x: hidden;
 }
 
-/* Title */
 .title {
-  font-size: 26px;
-  font-weight: bold;
-  color: gold;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
   text-align: center;
-  margin-bottom: 20px;
 }
 
-/* Table */
+/* ✅ Loading & No Data Styles */
+.loading,
+.noData {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ✅ Responsive Table */
 .table {
   width: 100%;
+  max-width: 1200px;
   border-collapse: collapse;
   background: white;
-  border-radius: 8px;
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* ✅ Table Head & Body */
 .table th,
 .table td {
   padding: 12px;
-  border-bottom: 1px solid #ddd;
-  text-align: left;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
 .table th {
-  background: gold;
-  color: #222;
+  background: #34495e;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
-/* Buttons */
+.table td {
+  color: #333;
+  font-size: 0.9rem;
+}
+
+/* ✅ Form Inputs */
+.input {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* ✅ Buttons */
 .editButton,
 .deleteButton,
-.saveButton {
+.saveButton,
+.cancelButton {
+  padding: 8px 12px;
   margin: 5px;
-  padding: 5px 10px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
 }
 
 .editButton {
-  background: #fbc531;
+  background: #f39c12;
+  color: white;
 }
+
 .deleteButton {
-  background: #e84118;
+  background: #e74c3c;
   color: white;
 }
+
 .saveButton {
-  background: #4cd137;
+  background: #2ecc71;
   color: white;
+}
+
+.cancelButton {
+  background: #95a5a6;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* ✅ Mobile-Friendly Table */
+@media (max-width: 768px) {
+  .table {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .editButton,
+  .deleteButton,
+  .saveButton,
+  .cancelButton {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    margin: 2px;
+  }
+}
+
+/* ✅ Extra Small Screens (375px) */
+@media (max-width: 375px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.75rem;
+    padding: 6px;
+  }
+
+  .editButton,
+  .deleteButton,
+  .saveButton,
+  .cancelButton {
+    padding: 5px 8px;
+    font-size: 0.75rem;
+    margin: 2px;
+  }
 }

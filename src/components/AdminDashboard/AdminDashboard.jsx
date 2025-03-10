@@ -7,17 +7,28 @@ export default function AdminDashboard() {
   const [rsvps, setRsvps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editId, setEditId] = useState(null);
-  const [editData, setEditData] = useState({ name: "", email: "", guests: "" });
+  const [editData, setEditData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    guests: "",
+    comment: "",
+  });
 
   useEffect(() => {
     fetchRSVPs();
   }, []);
 
   const fetchRSVPs = async () => {
-    const response = await fetch("/api/get-rsvps");
-    const data = await response.json();
-    setRsvps(data);
-    setLoading(false);
+    try {
+      const response = await fetch("/api/get-rsvps");
+      const data = await response.json();
+      setRsvps(data);
+    } catch (error) {
+      console.error("❌ Error fetching RSVPs:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleDelete = async (id) => {
@@ -34,7 +45,13 @@ export default function AdminDashboard() {
 
   const handleEdit = (rsvp) => {
     setEditId(rsvp._id);
-    setEditData({ name: rsvp.name, email: rsvp.email, guests: rsvp.guests });
+    setEditData({
+      name: rsvp.name,
+      phone: rsvp.phone || "",
+      email: rsvp.email || "",
+      guests: rsvp.guests,
+      comment: rsvp.comment || "",
+    });
   };
 
   const handleUpdate = async () => {
@@ -59,8 +76,11 @@ export default function AdminDashboard() {
           <thead>
             <tr>
               <th>Name</th>
+              <th>Phone</th>
               <th>Email</th>
               <th>Guests</th>
+              <th>Comment</th>
+              <th>Submitted At</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -84,6 +104,20 @@ export default function AdminDashboard() {
                 <td>
                   {editId === rsvp._id ? (
                     <input
+                      type="text"
+                      value={editData.phone}
+                      onChange={(e) =>
+                        setEditData({ ...editData, phone: e.target.value })
+                      }
+                      className={styles.input}
+                    />
+                  ) : (
+                    rsvp.phone || "N/A"
+                  )}
+                </td>
+                <td>
+                  {editId === rsvp._id ? (
+                    <input
                       type="email"
                       value={editData.email}
                       onChange={(e) =>
@@ -92,7 +126,7 @@ export default function AdminDashboard() {
                       className={styles.input}
                     />
                   ) : (
-                    rsvp.email
+                    rsvp.email || "N/A"
                   )}
                 </td>
                 <td>
@@ -111,12 +145,34 @@ export default function AdminDashboard() {
                 </td>
                 <td>
                   {editId === rsvp._id ? (
-                    <button
-                      onClick={handleUpdate}
-                      className={styles.saveButton}
-                    >
-                      💾 Save
-                    </button>
+                    <textarea
+                      value={editData.comment}
+                      onChange={(e) =>
+                        setEditData({ ...editData, comment: e.target.value })
+                      }
+                      className={styles.input}
+                    />
+                  ) : (
+                    rsvp.comment || "N/A"
+                  )}
+                </td>
+                <td>{new Date(rsvp.createdAt).toLocaleString()}</td>
+                <td>
+                  {editId === rsvp._id ? (
+                    <>
+                      <button
+                        onClick={handleUpdate}
+                        className={styles.saveButton}
+                      >
+                        💾 Save
+                      </button>
+                      <button
+                        onClick={() => setEditId(null)}
+                        className={styles.cancelButton}
+                      >
+                        ❌ Cancel
+                      </button>
+                    </>
                   ) : (
                     <>
                       <button
