@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./RSVPForm.module.css";
 import RSVPInvitationPDF from "@/components/InvitationPDF"; // ✅ Import the PDF component
@@ -13,8 +13,25 @@ export default function RSVPForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
   const API_URL = `${process.env.NEXT_PUBLIC_BASE_URL}/api/rsvp`;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // ✅ Stop observing once visible
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +59,10 @@ export default function RSVPForm() {
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      ref={sectionRef}
+      className={`${styles.container} ${isVisible ? styles.visible : ""}`}
+    >
       <h2 className={styles.title}>{t("rsvpTitle")}</h2>
 
       {!submitted ? (
@@ -79,8 +99,7 @@ export default function RSVPForm() {
       ) : (
         <div className={styles.confirmationContainer}>
           <p className={styles.confirmation}>✅ {t("rsvpMessage")}</p>
-          <RSVPInvitationPDF name={name} email={email} guests={guests} />{" "}
-          {/* ✅ Show PDF download */}
+          <RSVPInvitationPDF name={name} email={email} guests={guests} />
         </div>
       )}
     </div>

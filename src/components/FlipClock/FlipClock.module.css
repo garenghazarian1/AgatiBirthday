@@ -1,209 +1,181 @@
-/* --------------------------------------
-   Base Container (Normal View)
--------------------------------------- */
+/* Main Flip Clock Container */
 .flipClockContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  background: rgba(0, 0, 0, 0.6);
-  gap: 1rem;
-  box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
-  width: 100vw;
-  height: 50px;
-  cursor: pointer;
-}
-
-/* --------------------------------------
-     Fullscreen Container
--------------------------------------- */
-.flipClockContainerFull {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.8);
-  gap: 1.5rem;
-  box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
-  cursor: pointer;
-}
-
-/* --------------------------------------
-     Headline Text (Fullscreen)
--------------------------------------- */
-.headline {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 0.5rem;
-  font-family: Arial, sans-serif;
-  font-size: 2rem;
-  line-height: 1.2;
-  max-width: 90%;
-}
-
-/* --------------------------------------
-     Flip Units Wrapper
--------------------------------------- */
-.flipUnitsWrapper {
-  display: flex;
-  gap: 1rem;
-}
-
-/* --------------------------------------
-     Flip Unit
--------------------------------------- */
-.flipUnit {
-  display: flex;
-  align-items: center;
-}
-
-/* --------------------------------------
-     Flip Card (Digits)
--------------------------------------- */
-.flipCard {
+  background: radial-gradient(circle, #fff8f0, #ffe6e2);
+  backdrop-filter: blur(10px);
   position: relative;
-  width: 60px;
-  height: 50px;
-  font-family: Arial, sans-serif;
-  font-size: 1.2rem; /* Slightly bigger to avoid distortion */
-  color: #fff;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1.5s ease-out, transform 1.2s ease-out;
+}
+
+.flipClockContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/001.png"),
+    /* Add a subtle cross pattern */
+      radial-gradient(circle at 50% 50%, rgba(255, 223, 80, 0.2), transparent);
+  background-size: 200px 200px, cover;
+  /* background-repeat: repeat, no-repeat; */
+  background-position: center, center;
+  opacity: 0.1;
+  z-index: -9;
+}
+
+/* Apply animation when section is visible */
+.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Headline */
+.headline {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #7d4a48;
   text-align: center;
-  border-radius: 8px;
-  overflow: hidden;
-  perspective: 1000px;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
+}
 
-  /* Fix iOS font scaling */
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
+.visible .headline {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-  /* Ensure number alignment */
+/* Wrapper for flip units */
+.flipUnitsWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  line-height: 50px;
-
-  /* Prevent Safari rendering issues */
-  font-smooth: always;
-  -webkit-font-smoothing: antialiased;
+  gap: 1.5rem;
 }
 
-/* Front & Back Face of the Flip */
+/* Flip Unit Block */
+.flipUnit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out 0.5s, transform 1s ease-out 0.5s;
+}
+
+.visible .flipUnit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Flip Card */
+.flipCard {
+  position: relative;
+  width: 90px;
+  height: 120px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  background: linear-gradient(180deg, #b87d6b, #7d4a48);
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  perspective: 500px;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Flip Front & Back */
 .flipFront,
 .flipBack {
   position: absolute;
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   backface-visibility: hidden;
-  transition: transform 0.6s ease-in-out;
-  font-size: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherit;
+  border-radius: 12px;
 }
 
 .flipBack {
   transform: rotateX(180deg);
 }
 
-.flipCard.flipping .flipFront {
-  transform: rotateX(-180deg);
-}
-
-.flipCard.flipping .flipBack {
-  transform: rotateX(0deg);
-}
-
-/* --------------------------------------
-     Label (days, hours, mins, secs)
--------------------------------------- */
+/* Label for Time Units */
 .label {
-  margin-top: 5px;
-  font-family: Arial, sans-serif;
-  font-size: 0.7rem;
-  color: gold;
-  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #5a322f;
+  margin-top: 8px;
+  letter-spacing: 1px;
 }
 
-/* =======================================
-     Fullscreen-Specific Style Overrides
-========================================= */
-.flipClockContainerFull .flipCard {
-  width: 60px;
-  height: 80px;
-  font-size: 2rem;
-  line-height: 80px;
+/* Flip Animation */
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(-180deg);
+  }
 }
 
-.flipClockContainerFull .label {
-  font-size: 1rem;
-}
-
-.flipClockContainerFull .headline {
-  font-size: 2.5rem;
-}
-
-/* =======================================
-     RESPONSIVE BREAKPOINT EXAMPLE (MOBILE)
-========================================= */
-/* @media (max-width: 600px) {
-  
-  .flipClockContainer {
-    width: 70vw;
-    height: auto;
-    flex-wrap: wrap;
+/* Responsive Design */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2rem;
   }
 
   .flipUnitsWrapper {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .flipCard {
-    width: 42px;
-    height: 52px;
-    font-size: 1rem;
-    line-height: 52px;
-  }
-
-  .label {
-    font-size: 0.8rem;
-  }
-
-  
-  .flipClockContainerFull {
-    padding: 1rem;
     gap: 1rem;
   }
 
-  .flipClockContainerFull .flipCard {
-    width: 60px;
-    height: 65px;
-    font-size: 1.5rem;
-    line-height: 65px;
-  }
-
-  .flipClockContainerFull .label {
-    font-size: 0.9rem;
-  }
-
-  .flipClockContainerFull .headline {
-    font-size: 1.5rem;
-  }
-} */
-
-/* =======================================
-     iPhone-Specific Fixes
-========================================= */
-@supports (-webkit-touch-callout: none) {
   .flipCard {
-    font-smooth: always;
-    -webkit-font-smoothing: antialiased;
+    width: 75px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
+
+  .label {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .flipUnitsWrapper {
+    gap: 0.8rem;
+  }
+
+  .flipCard {
+    width: 65px;
+    height: 85px;
+    font-size: 2rem;
+  }
+
+  .label {
+    font-size: 0.9rem;
   }
 }

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./FlipClock.module.css";
 
 export default function FlipClock({ eventDate }) {
   const [timeLeft, setTimeLeft] = useState({});
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -21,7 +22,7 @@ export default function FlipClock({ eventDate }) {
           s: Math.floor((difference / 1000) % 60),
         };
       } else {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+        return { d: 0, h: 0, m: 0, s: 0 };
       }
     };
 
@@ -36,23 +37,30 @@ export default function FlipClock({ eventDate }) {
     return () => clearInterval(timer);
   }, [eventDate]);
 
-  // Toggle between normal and fullscreen
-  const toggleFullscreen = () => {
-    setIsFullscreen((prev) => !prev);
-  };
+  // Intersection Observer for animation trigger
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing once visible
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
-      onClick={toggleFullscreen}
-      className={
-        isFullscreen ? styles.flipClockContainerFull : styles.flipClockContainer
-      }
+      ref={sectionRef}
+      className={`${styles.flipClockContainer} ${
+        isVisible ? styles.visible : ""
+      }`}
     >
-      {isFullscreen && (
-        <h2 className={styles.headline}>
-          ⏳ Baptism Countdown: Ani &amp; Agati
-        </h2>
-      )}
+      <h2 className={styles.headline}>⏳ Baptism Countdown: Ani & Agati</h2>
 
       <div className={styles.flipUnitsWrapper}>
         {Object.entries(timeLeft).map(([unit, value]) => {
