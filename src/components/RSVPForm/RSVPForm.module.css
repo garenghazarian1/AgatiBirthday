@@ -140,3 +140,66 @@
     font-size: 0.8rem;
   }
 }
+
+/* ✅ Confirmation Container */
+.confirmationContainer {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ✅ Confirmation Message */
+.confirmation {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* ✅ PDF Download Button */
+.confirmationContainer a {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #3498db;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease-in-out;
+}
+
+.confirmationContainer a:hover {
+  background: #2980b9;
+}
+
+/* ✅ Mobile Responsiveness */
+@media (max-width: 480px) {
+  .confirmationContainer {
+    max-width: 90%;
+    padding: 1rem;
+  }
+
+  .confirmation {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .confirmationContainer a {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+}
