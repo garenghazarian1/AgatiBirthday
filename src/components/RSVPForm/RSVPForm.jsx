@@ -40,6 +40,12 @@ export default function RSVPForm() {
     setLoading(true);
     setError("");
 
+    if (!API_URL || API_URL.includes("undefined")) {
+      console.error("❌ API_URL is not set correctly:", API_URL);
+      setError("Server error: API URL is not configured.");
+      return;
+    }
+
     try {
       const response = await fetch(API_URL, {
         method: "POST",
