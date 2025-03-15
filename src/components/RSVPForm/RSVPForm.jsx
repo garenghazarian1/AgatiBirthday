@@ -8,8 +8,6 @@ import RSVPInvitationPDF from "@/components/InvitationPDF"; // ✅ Import the PD
 export default function RSVPForm() {
   const t = useTranslations();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
   const [guests, setGuests] = useState("");
   const [comment, setComment] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -43,6 +41,27 @@ export default function RSVPForm() {
     if (!API_URL || API_URL.includes("undefined")) {
       console.error("❌ API_URL is not set correctly:", API_URL);
       setError("Server error: API URL is not configured.");
+      setLoading(false); // ✅ Prevent loading from getting stuck
+      return;
+    }
+
+    // Trim name input and validate guests
+    const trimmedName = name.trim();
+    const guestsNumber = parseInt(guests, 10);
+
+    if (!trimmedName) {
+      setError("❌ Name is required.");
+      setLoading(false);
+      return;
+    }
+
+    if (
+      isNaN(guestsNumber) ||
+      guestsNumber < 1 ||
+      !Number.isInteger(guestsNumber)
+    ) {
+      setError("❌ Guests must be a whole number greater than 0.");
+      setLoading(false);
       return;
     }
 
@@ -50,11 +69,16 @@ export default function RSVPForm() {
       const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, phone, guests, comment }),
+        body: JSON.stringify({
+          name: trimmedName,
+          guests: guestsNumber,
+          comment,
+        }), // ✅ Send trimmed name
       });
 
       if (!response.ok) {
-        throw new Error(`❌ Error: ${response.statusText}`);
+        const errorData = await response.json();
+        throw new Error(`❌ Error: ${errorData.error || response.statusText}`);
       }
 
       setSubmitted(true);
@@ -87,30 +111,6 @@ export default function RSVPForm() {
             onChange={(e) => setName(e.target.value)}
             className={styles.input}
             required
-          />
-
-          {/* Phone Number Field (Required) */}
-          <label className={styles.label}>
-            {t("rsvpForm.phoneLabel")}{" "}
-            <span className={styles.required}>*</span>
-          </label>
-          <input
-            type="tel"
-            placeholder={t("rsvpForm.phonePlaceholder")}
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            className={styles.input}
-            required
-          />
-
-          {/* Email Field (Optional) */}
-          <label className={styles.label}>{t("rsvpForm.emailLabel")}</label>
-          <input
-            type="email"
-            placeholder={t("rsvpForm.emailPlaceholder")}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={styles.input}
           />
 
           {/* Guests Number Field (Required) */}
@@ -146,13 +146,7 @@ export default function RSVPForm() {
       ) : (
         <div className={styles.confirmationContainer}>
           <p className={styles.confirmation}>✅ {t("rsvpMessage")}</p>
-          <RSVPInvitationPDF
-            name={name}
-            email={email}
-            phone={phone}
-            guests={guests}
-            comment={comment}
-          />
+          <RSVPInvitationPDF name={name} guests={guests} comment={comment} />
         </div>
       )}
     </div>

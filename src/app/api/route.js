@@ -4,15 +4,28 @@ import RSVP from "@/models/RSVP";
 export async function POST(req) {
   try {
     await connectToDatabase();
-    const { name, email, guests } = await req.json();
 
-    if (!name || !email || !guests) {
-      return new Response(JSON.stringify({ error: "Missing fields" }), {
+    let data;
+    try {
+      data = await req.json();
+    } catch (error) {
+      return new Response(JSON.stringify({ error: "Invalid JSON format" }), {
         status: 400,
       });
     }
 
-    const newRSVP = new RSVP({ name, email, guests });
+    const { name, guests, comment = "" } = data; // ✅ Ensure comment is included
+
+    if (!name || !guests) {
+      return new Response(
+        JSON.stringify({ error: "Missing required fields" }),
+        {
+          status: 400,
+        }
+      );
+    }
+
+    const newRSVP = new RSVP({ name, guests, comment }); // ✅ Now comment is saved
     await newRSVP.save();
 
     return new Response(
@@ -22,6 +35,7 @@ export async function POST(req) {
       }
     );
   } catch (error) {
+    console.error("❌ Error saving RSVP:", error);
     return new Response(JSON.stringify({ error: "Failed to save RSVP" }), {
       status: 500,
     });

@@ -5,8 +5,6 @@ import mongoose from "mongoose";
 const rsvpSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    phone: { type: String, required: true }, // ✅ Added phone field
-    email: { type: String }, // Email is now optional
     guests: { type: Number, required: true },
     comment: { type: String, default: "" }, // ✅ Added optional comment field
   },
@@ -30,34 +28,25 @@ export async function OPTIONS() {
 // ✅ Handle RSVP POST request (Saves RSVP to MongoDB)
 export async function POST(req) {
   try {
-    // ✅ Read request body
-    const { name, phone, email, guests, comment } = await req.json();
+    const { name, guests, comment } = await req.json(); // ✅ Removed phone/email
 
-    // ✅ Validate required fields
-    if (!name || !phone || !guests) {
+    if (!name || !guests) {
       return new Response(
-        JSON.stringify({
-          error: "❌ Missing required fields: Name, Phone, Guests",
-        }),
+        JSON.stringify({ error: "❌ Missing required fields: Name, Guests" }),
         { status: 400, headers: corsHeaders }
       );
     }
 
-    // ✅ Connect to MongoDB
     await connectToDatabase();
 
-    // ✅ Save RSVP to Database
-    const newRSVP = new RSVP({ name, phone, email, guests, comment });
+    const newRSVP = new RSVP({ name, guests, comment });
     await newRSVP.save();
-
-    console.log("✅ RSVP saved:", newRSVP);
 
     return new Response(
       JSON.stringify({ message: "✅ RSVP saved successfully!", data: newRSVP }),
       { status: 201, headers: corsHeaders }
     );
   } catch (error) {
-    console.error("❌ Error saving RSVP:", error);
     return new Response(
       JSON.stringify({ error: "❌ Server error while saving RSVP" }),
       { status: 500, headers: corsHeaders }

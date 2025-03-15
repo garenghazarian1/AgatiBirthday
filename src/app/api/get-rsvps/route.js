@@ -67,18 +67,29 @@ export async function DELETE(req) {
 export async function PUT(req) {
   try {
     await connectToDatabase();
-    const { id, name, phone, email, guests, comment } = await req.json();
+    const { id, name, guests, comment = "" } = await req.json(); // ✅ Removed phone & email
 
-    if (!id) {
-      return new Response(JSON.stringify({ error: "❌ Missing RSVP ID" }), {
-        status: 400,
-        headers: { "Content-Type": "application/json" },
-      });
+    if (!id || !name || !guests) {
+      return new Response(
+        JSON.stringify({
+          error: "❌ Missing required fields: ID, Name, Guests",
+        }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    // Ensure `guests` is a number
+    const guestsNumber = parseInt(guests, 10);
+    if (isNaN(guestsNumber) || guestsNumber < 1) {
+      return new Response(
+        JSON.stringify({ error: "❌ Guests must be a number greater than 0" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
     }
 
     const updatedRSVP = await RSVP.findByIdAndUpdate(
       id,
-      { name, phone, email, guests, comment },
+      { name, guests: guestsNumber, comment },
       { new: true }
     );
 
