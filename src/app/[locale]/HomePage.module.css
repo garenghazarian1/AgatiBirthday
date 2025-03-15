@@ -1,9 +1,10 @@
+/* 🌍 Full-Screen Scroll Container */
 .scrollContainer {
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
-  scroll-snap-type: y mandatory; /* Enables snap scrolling */
-  scroll-behavior: smooth; /* Smooth scrolling effect */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 .section {
@@ -12,5 +13,203 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  scroll-snap-align: start; /* Stops scroll at the start of each section */
+  scroll-snap-align: start;
+  position: relative;
+}
+
+/* 🎉 Welcome Screen */
+.welcomeScreen {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 1000;
+  opacity: 1;
+  animation: fadeOut 8s ease-in-out forwards;
+  transition: opacity 3s ease-in-out;
+  overflow: hidden; /* So confetti doesn't go out */
+}
+
+/* 🎆 Celebration Background */
+.welcomeScreen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/001.png"),
+    radial-gradient(circle at 50% 50%, rgba(255, 223, 80, 0.2), transparent);
+  background-size: 200px 200px, cover;
+  opacity: 0.1;
+  z-index: -9;
+}
+
+/* ✨ Animated Welcome Text */
+.welcomeTitle1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeSlideDown 1s ease-out forwards;
+}
+
+.welcomeTitle2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: gold;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: fadeSlideRight 1.5s ease-out 1.5s forwards;
+}
+
+.welcomeTitle3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: fadeSlideLeft 1.5s ease-out 3s forwards;
+}
+
+.welcomeText {
+  font-size: 1rem;
+  color: #e2e2e2;
+  max-width: 80%;
+  margin-top: 10px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlideUp 2s ease-out 4.5s forwards;
+}
+
+/* 🏆 Text Animations */
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🎊 Confetti Falling Effect */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: gold;
+  opacity: 0.7;
+  border-radius: 50%;
+  animation: confettiFall linear infinite;
+}
+
+/* ✨ Sparkles Floating Effect */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 223, 80, 0.7);
+  opacity: 0.5;
+  border-radius: 50%;
+  animation: sparkleFloat linear infinite;
+}
+
+/* 🎊 Confetti Falling Animation */
+@keyframes confettiFall {
+  from {
+    transform: translateY(-100vh) rotate(0deg);
+  }
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+/* ✨ Sparkles Floating Animation */
+@keyframes sparkleFloat {
+  from {
+    transform: translateY(-10px) scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: translateY(10px) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+/* 🏆 Smooth Fade Out for Welcome Screen */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.3;
+    visibility: hidden;
+  }
+}
+
+/* 🔽 Responsive Design for Mobile (370px & Below) */
+@media (max-width: 370px) {
+  .welcomeTitle1 {
+    font-size: 1.2rem;
+  }
+
+  .welcomeTitle2 {
+    font-size: 1.5rem;
+  }
+
+  .welcomeTitle3 {
+    font-size: 1.2rem;
+  }
+
+  .welcomeText {
+    font-size: 0.9rem;
+  }
 }

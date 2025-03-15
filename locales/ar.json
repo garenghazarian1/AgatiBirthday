@@ -34,5 +34,9 @@
   "location": "المكان",
   "invitationClosing": "نتطلع للاحتفال بهذه اللحظة الغالية معكم!",
   "pdfGenerating": "جارٍ إنشاء ملف PDF...",
-  "pdfDownloadButton": "تحميل دعوتكم"
+  "pdfDownloadButton": "تحميل دعوتكم",
+  "welcome1": "مرحبًا بكم في",
+  "welcome2": "دعوة تعميد أني وأجاتي",
+  "welcome3": "دعوة التعميد",
+  "welcome4": "يسعدنا دعوتكم للاحتفال بهذه المناسبة الجميلة معنا!"
 }
