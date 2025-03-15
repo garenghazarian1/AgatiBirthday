@@ -38,5 +38,19 @@
   "welcome1": "Willkommen zur",
   "welcome2": "Taufeinladung von Ani & Agati",
   "welcome3": "Einladung zur Taufe",
-  "welcome4": "Wir freuen uns, Sie zu dieser schönen Feier einzuladen!"
+  "welcome4": "Wir freuen uns, Sie zu dieser schönen Feier einzuladen!",
+  "adminTitle": "RSVP-Verwaltungsdashboard",
+  "loadingMessage": "RSVPs werden geladen...",
+  "nameLabel": "Vollständiger Name",
+  "guestsLabel": "Anzahl der Gäste",
+  "commentLabel": "Kommentare",
+  "submittedAtLabel": "Eingereicht am",
+  "actionsLabel": "Aktionen",
+  "editButton": "Bearbeiten",
+  "deleteButton": "Löschen",
+  "saveButton": "Speichern",
+  "cancelButton": "Abbrechen",
+  "deleteConfirmation": "Sind Sie sicher, dass Sie dieses RSVP löschen möchten?",
+  "noRSVPsMessage": "Noch keine RSVPs.",
+  "totalGuests": "Gesamtzahl der Gäste"
 }

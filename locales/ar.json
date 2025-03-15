@@ -38,5 +38,19 @@
   "welcome1": "مرحبًا بكم في",
   "welcome2": "دعوة تعميد أني وأجاتي",
   "welcome3": "دعوة التعميد",
-  "welcome4": "يسعدنا دعوتكم للاحتفال بهذه المناسبة الجميلة معنا!"
+  "welcome4": "يسعدنا دعوتكم للاحتفال بهذه المناسبة الجميلة معنا!",
+  "adminTitle": "لوحة إدارة RSVP",
+  "loadingMessage": "جارٍ تحميل الحجوزات...",
+  "nameLabel": "الاسم الكامل",
+  "guestsLabel": "عدد الضيوف",
+  "commentLabel": "التعليقات",
+  "submittedAtLabel": "تم الإرسال في",
+  "actionsLabel": "الإجراءات",
+  "editButton": "تعديل",
+  "deleteButton": "حذف",
+  "saveButton": "حفظ",
+  "cancelButton": "إلغاء",
+  "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا الحجز؟",
+  "noRSVPsMessage": "لا يوجد حجوزات حتى الآن.",
+  "totalGuests": "إجمالي الضيوف"
 }

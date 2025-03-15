@@ -1,23 +1,31 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./AdminDashboard.module.css";
 
 export default function AdminDashboard() {
+  const t = useTranslations();
   const [rsvps, setRsvps] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [hydrated, setHydrated] = useState(false);
   const [editId, setEditId] = useState(null);
   const [editData, setEditData] = useState({
     name: "",
-    phone: "",
-    email: "",
     guests: "",
     comment: "",
   });
 
+  // ✅ Ensure translations are loaded before rendering
   useEffect(() => {
-    fetchRSVPs();
+    setHydrated(true);
   }, []);
+
+  // ✅ Fetch RSVP Data
+  useEffect(() => {
+    if (!hydrated) return;
+    fetchRSVPs();
+  }, [hydrated]);
 
   const fetchRSVPs = async () => {
     try {
@@ -31,8 +39,12 @@ export default function AdminDashboard() {
     }
   };
 
+  // ✅ Calculate Total Guests
+  const totalGuests = rsvps.reduce((sum, rsvp) => sum + (rsvp.guests || 0), 0);
+
+  // ✅ Delete RSVP
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this RSVP?")) return;
+    if (!confirm(t("deleteConfirmation"))) return;
 
     await fetch("/api/get-rsvps", {
       method: "DELETE",
@@ -43,17 +55,17 @@ export default function AdminDashboard() {
     fetchRSVPs();
   };
 
+  // ✅ Edit RSVP
   const handleEdit = (rsvp) => {
     setEditId(rsvp._id);
     setEditData({
       name: rsvp.name,
-      phone: rsvp.phone || "",
-      email: rsvp.email || "",
       guests: rsvp.guests,
       comment: rsvp.comment || "",
     });
   };
 
+  // ✅ Save Edited RSVP
   const handleUpdate = async () => {
     await fetch("/api/get-rsvps", {
       method: "PUT",
@@ -65,23 +77,28 @@ export default function AdminDashboard() {
     fetchRSVPs();
   };
 
+  if (!hydrated) return null;
+
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>📋 Admin RSVP Dashboard</h2>
+      <h2 className={styles.title}>📋 {t("adminTitle")}</h2>
+
+      {/* ✅ Display Total Guest Count */}
+      <p className={styles.totalGuests}>
+        {t("totalGuests")}: <strong>{totalGuests}</strong>
+      </p>
 
       {loading ? (
-        <p className={styles.loading}>Loading RSVPs...</p>
+        <p className={styles.loading}>{t("loadingMessage")}</p>
       ) : rsvps.length > 0 ? (
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Guests</th>
-              <th>Comment</th>
-              <th>Submitted At</th>
-              <th>Actions</th>
+              <th>{t("nameLabel")}</th>
+              <th>{t("guestsLabel")}</th>
+              <th>{t("commentLabel")}</th>
+              <th>{t("submittedAtLabel")}</th>
+              <th>{t("actionsLabel")}</th>
             </tr>
           </thead>
           <tbody>
@@ -99,34 +116,6 @@ export default function AdminDashboard() {
                     />
                   ) : (
                     rsvp.name
-                  )}
-                </td>
-                <td>
-                  {editId === rsvp._id ? (
-                    <input
-                      type="text"
-                      value={editData.phone}
-                      onChange={(e) =>
-                        setEditData({ ...editData, phone: e.target.value })
-                      }
-                      className={styles.input}
-                    />
-                  ) : (
-                    rsvp.phone || "N/A"
-                  )}
-                </td>
-                <td>
-                  {editId === rsvp._id ? (
-                    <input
-                      type="email"
-                      value={editData.email}
-                      onChange={(e) =>
-                        setEditData({ ...editData, email: e.target.value })
-                      }
-                      className={styles.input}
-                    />
-                  ) : (
-                    rsvp.email || "N/A"
                   )}
                 </td>
                 <td>
@@ -156,7 +145,9 @@ export default function AdminDashboard() {
                     rsvp.comment || "N/A"
                   )}
                 </td>
-                <td>{new Date(rsvp.createdAt).toLocaleString()}</td>
+                <td>
+                  {hydrated ? new Date(rsvp.createdAt).toLocaleString() : "..."}
+                </td>
                 <td>
                   {editId === rsvp._id ? (
                     <>
@@ -164,13 +155,13 @@ export default function AdminDashboard() {
                         onClick={handleUpdate}
                         className={styles.saveButton}
                       >
-                        💾 Save
+                        💾 {t("saveButton")}
                       </button>
                       <button
                         onClick={() => setEditId(null)}
                         className={styles.cancelButton}
                       >
-                        ❌ Cancel
+                        ❌ {t("cancelButton")}
                       </button>
                     </>
                   ) : (
@@ -179,13 +170,13 @@ export default function AdminDashboard() {
                         onClick={() => handleEdit(rsvp)}
                         className={styles.editButton}
                       >
-                        ✏️ Edit
+                        ✏️ {t("editButton")}
                       </button>
                       <button
                         onClick={() => handleDelete(rsvp._id)}
                         className={styles.deleteButton}
                       >
-                        🗑 Delete
+                        🗑 {t("deleteButton")}
                       </button>
                     </>
                   )}
@@ -195,7 +186,7 @@ export default function AdminDashboard() {
           </tbody>
         </table>
       ) : (
-        <p className={styles.noData}>No RSVPs yet.</p>
+        <p className={styles.noData}>{t("noRSVPsMessage")}</p>
       )}
     </div>
   );

@@ -38,5 +38,19 @@
   "welcome1": "Добро пожаловать на",
   "welcome2": "Приглашение на крещение Ани и Агати",
   "welcome3": "Приглашение на крещение",
-  "welcome4": "Мы рады пригласить вас отметить это прекрасное событие с нами!"
+  "welcome4": "Мы рады пригласить вас отметить это прекрасное событие с нами!",
+  "adminTitle": "Панель управления RSVP",
+  "loadingMessage": "Загрузка RSVP...",
+  "nameLabel": "Полное имя",
+  "guestsLabel": "Количество гостей",
+  "commentLabel": "Комментарии",
+  "submittedAtLabel": "Отправлено",
+  "actionsLabel": "Действия",
+  "editButton": "Редактировать",
+  "deleteButton": "Удалить",
+  "saveButton": "Сохранить",
+  "cancelButton": "Отмена",
+  "deleteConfirmation": "Вы уверены, что хотите удалить этот RSVP?",
+  "noRSVPsMessage": "RSVP пока нет.",
+  "totalGuests": "Общее количество гостей"
 }

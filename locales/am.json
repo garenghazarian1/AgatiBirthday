@@ -38,5 +38,19 @@
   "welcome1": "Բարի գալուստ",
   "welcome2": "Անի և Ագատիի",
   "welcome3": "Մկրտության հրավեր",
-  "welcome4": "Մենք ուրախ ենք հրավիրել ձեզ նշելու այս գեղեցիկ առիթը:"
+  "welcome4": "Մենք ուրախ ենք հրավիրել ձեզ նշելու այս գեղեցիկ առիթը:",
+  "adminTitle": "Մկրտության RSVP կառավարման համակարգ",
+  "loadingMessage": "Բեռնում RSVP-ները...",
+  "nameLabel": "Անուն",
+  "guestsLabel": "Հյուրերի թիվը",
+  "commentLabel": "Մեկնաբանություններ",
+  "submittedAtLabel": "Ուղարկված է",
+  "actionsLabel": "Գործողություններ",
+  "editButton": "Խմբագրել",
+  "deleteButton": "Ջնջել",
+  "saveButton": "Պահպանել",
+  "cancelButton": "Չեղարկել",
+  "deleteConfirmation": "Վստա՞հ եք, որ ցանկանում եք ջնջել այս RSVP-ն:",
+  "noRSVPsMessage": "Դեռ RSVP չկա։",
+  "totalGuests": "Ընդհանուր հյուրեր"
 }

@@ -16,6 +16,12 @@
   color: #2c3e50;
   text-align: center;
 }
+.totalGuests {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #2c3e50;
+}
 
 /* ✅ Loading & No Data Styles */
 .loading,
