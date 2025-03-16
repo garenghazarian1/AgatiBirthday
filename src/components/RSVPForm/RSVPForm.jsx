@@ -134,7 +134,7 @@ function RSVPFormContent() {
       className={`${styles.container} ${isVisible ? styles.visible : ""}`}
     >
       <h2 className={styles.title}>{t("rsvpTitle")}</h2>
-      <p className={styles.requiredNotice}>* {t("requiredFieldsNotice")}</p>
+      {/* <p className={styles.requiredNotice}>* {t("requiredFieldsNotice")}</p> */}
 
       {!submitted ? (
         <form
