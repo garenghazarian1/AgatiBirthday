@@ -1,0 +1,35 @@
+/* 🎵 Music Button Container */
+.musicContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+/* 🎼 Music Button */
+.musicButton {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 🔊 Active State (Playing) */
+.musicButton.active {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+/* 🎶 Button Hover */
+.musicButton:hover {
+  transform: scale(1.1);
+}
+
+/* 🔽 Responsive Design */
+@media (max-width: 480px) {
+  .musicButton {
+    font-size: 24px;
+  }
+}

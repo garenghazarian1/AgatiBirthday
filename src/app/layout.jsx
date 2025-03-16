@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import IntlProvider from "../components/IntlProvider"; // Import IntlProvider
+import BackgroundMusic from "@/components/BackgroundMusic/BackgroundMusic";
 
 console.log("✅ RootLayout is rendering...");
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <BackgroundMusic />
         <IntlProvider>{children}</IntlProvider> {/* Wrap inside IntlProvider */}
       </body>
     </html>
