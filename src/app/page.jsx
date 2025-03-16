@@ -58,6 +58,9 @@ export default function HomePage({ params }) {
         <GuestNameFetcher setGuestName={setGuestName} />
       </Suspense>
 
+      {/* AutoScroll Component */}
+      <AutoScroll />
+
       {showWelcome ? (
         <div className={styles.welcomeScreen}>
           {guestName && (
@@ -83,13 +86,13 @@ export default function HomePage({ params }) {
       ) : (
         <div className={styles.scrollContainer}>
           <LanguageSwitcher />
-          <section className={styles.section}>
+          <section id="section2" className={styles.section}>
             <Invitation />
           </section>
-          <section className={styles.section}>
+          <section id="section3" className={styles.section}>
             <InvitationContent />
           </section>
-          <section className={styles.section}>
+          <section id="rsvpSection" className={styles.section}>
             <RSVPForm />
           </section>
           <section className={styles.section}>
