@@ -125,6 +125,21 @@
   opacity: 0.8;
 }
 
+.restoreButton {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.restoreButton:hover {
+  background-color: #45a049;
+}
+
 /* ✅ Mobile-Friendly Table */
 @media (max-width: 768px) {
   .table {
