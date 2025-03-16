@@ -15,9 +15,11 @@ function RSVPFormContent() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false); // ✅ Detect keyboard open state
   const sectionRef = useRef(null);
+  const formRef = useRef(null);
+  const inputRef = useRef(null);
 
-  // ✅ Wrap useSearchParams inside Suspense
   const searchParams = useSearchParams();
   useEffect(() => {
     const urlName = searchParams.get("name");
@@ -41,6 +43,20 @@ function RSVPFormContent() {
 
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
+  }, []);
+
+  // ✅ Detect when keyboard is open/close
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerHeight < 500) {
+        setIsKeyboardOpen(true);
+      } else {
+        setIsKeyboardOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -121,7 +137,13 @@ function RSVPFormContent() {
       <p className={styles.requiredNotice}>* {t("requiredFieldsNotice")}</p>
 
       {!submitted ? (
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form
+          ref={formRef}
+          onSubmit={handleSubmit}
+          className={`${styles.form} ${
+            isKeyboardOpen ? styles.keyboardOpen : ""
+          }`}
+        >
           <label className={styles.label}>
             {t("rsvpForm.nameLabel")} <span className={styles.required}>*</span>
           </label>
@@ -139,12 +161,20 @@ function RSVPFormContent() {
             <span className={styles.required}>*</span>
           </label>
           <input
+            ref={inputRef}
             type="number"
             placeholder={t("rsvpForm.guestsPlaceholder")}
             value={guests}
             onChange={(e) => setGuests(e.target.value)}
             className={styles.input}
             required
+            inputMode="numeric" // ✅ Improves number input experience
+            onFocus={() =>
+              formRef.current.scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+              })
+            } // ✅ Auto-scroll form
           />
 
           <label className={styles.label}>{t("rsvpForm.commentLabel")}</label>
@@ -181,7 +211,6 @@ function RSVPFormContent() {
   );
 }
 
-// ✅ Wrap RSVPFormContent inside Suspense
 export default function RSVPForm() {
   return (
     <Suspense fallback={<div>Loading RSVP Form...</div>}>

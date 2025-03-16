@@ -186,6 +186,10 @@
   background: #2980b9;
 }
 
+.keyboardOpen {
+  padding-bottom: 100px;
+}
+
 /* ✅ Mobile Responsiveness */
 @media (max-width: 480px) {
   .confirmationContainer {
