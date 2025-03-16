@@ -9,6 +9,7 @@ import { useMessages } from "@/lib/i18n";
 import FlipClock from "@/components/FlipClock/FlipClock";
 import InvitationContent from "@/components/invitationContent/InvitationContent";
 import styles from "./[locale]/HomePage.module.css";
+import AutoScroll from "@/components/AutoScroll/AutoScroll";
 
 // ✅ Separate GuestNameFetcher component to prevent hydration mismatch
 function GuestNameFetcher({ setGuestName }) {
