@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Invitation from "@/components/Invitation/Invitation";
 import RSVPForm from "@/components/RSVPForm/RSVPForm";
@@ -10,25 +10,29 @@ import FlipClock from "@/components/FlipClock/FlipClock";
 import InvitationContent from "@/components/invitationContent/InvitationContent";
 import styles from "./HomePage.module.css";
 
+// ✅ Move `useSearchParams()` into a separate component
+function GuestNameFetcher({ setGuestName }) {
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const urlName = searchParams.get("name");
+    if (urlName) {
+      setGuestName(decodeURIComponent(urlName));
+    }
+  }, [searchParams]);
+
+  return null;
+}
+
 export default function HomePage() {
   const t = useTranslations();
-  const searchParams = useSearchParams();
   const [showWelcome, setShowWelcome] = useState(true);
   const [confetti, setConfetti] = useState([]);
   const [guestName, setGuestName] = useState("");
 
-  // ✅ Read name from URL and set it for the RSVP form
-  useEffect(() => {
-    const urlName = searchParams.get("name");
-    if (urlName) {
-      setGuestName(decodeURIComponent(urlName)); // Fix encoding issues
-    }
-  }, [searchParams]);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowWelcome(false);
-    }, 8000); // 🛠 Show welcome screen for 8 seconds
+    }, 8000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -37,7 +41,7 @@ export default function HomePage() {
     const confettiArray = Array.from({ length: 30 }).map((_, index) => ({
       id: index,
       left: `${Math.random() * 100}vw`,
-      animationDuration: `${Math.random() * 3 + 3}s`, // 🛠 Slower confetti effect
+      animationDuration: `${Math.random() * 3 + 3}s`,
       delay: `${Math.random() * 1}s`,
     }));
     setConfetti(confettiArray);
@@ -45,6 +49,11 @@ export default function HomePage() {
 
   return (
     <div className={styles.container}>
+      {/* ✅ Suspense prevents hydration errors */}
+      <Suspense fallback={<div>Loading guest name...</div>}>
+        <GuestNameFetcher setGuestName={setGuestName} />
+      </Suspense>
+
       {showWelcome ? (
         <div className={styles.welcomeScreen}>
           {guestName && (
@@ -53,8 +62,6 @@ export default function HomePage() {
           <h2 className={styles.welcomeTitle1}>{t("welcome1")}</h2>
           <h2 className={styles.welcomeTitle2}>{t("welcome2")}</h2>
           <h2 className={styles.welcomeTitle3}>{t("welcome3")}</h2>
-          {/* 🏆 Display Guest's Name if Available */}
-
           <p className={styles.welcomeText}>{t("welcome4")}</p>
 
           {confetti.map((piece) => (
@@ -89,6 +96,3 @@ export default function HomePage() {
     </div>
   );
 }
-
-// Personalized Invitation Links (/invite?name=John)
-// 3️⃣ 📅 Google Calendar Integration

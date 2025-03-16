@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./RSVPForm.module.css";
 import RSVPInvitationPDF from "@/components/InvitationPDF";
 import { useSearchParams } from "next/navigation";
 
-export default function RSVPForm() {
+function RSVPFormContent() {
   const t = useTranslations();
   const [name, setName] = useState("");
   const [guests, setGuests] = useState("");
@@ -17,6 +17,7 @@ export default function RSVPForm() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
+  // ✅ Wrap useSearchParams inside Suspense
   const searchParams = useSearchParams();
   useEffect(() => {
     const urlName = searchParams.get("name");
@@ -177,5 +178,14 @@ export default function RSVPForm() {
         </div>
       )}
     </div>
+  );
+}
+
+// ✅ Wrap RSVPFormContent inside Suspense
+export default function RSVPForm() {
+  return (
+    <Suspense fallback={<div>Loading RSVP Form...</div>}>
+      <RSVPFormContent />
+    </Suspense>
   );
 }

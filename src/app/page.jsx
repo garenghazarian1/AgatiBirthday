@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Invitation from "@/components/Invitation/Invitation";
@@ -10,21 +10,25 @@ import FlipClock from "@/components/FlipClock/FlipClock";
 import InvitationContent from "@/components/invitationContent/InvitationContent";
 import styles from "./[locale]/HomePage.module.css";
 
-export default function HomePage({ params }) {
-  const locale = params.locale || "am"; // ✅ Get locale from dynamic route
-  const messages = useMessages(locale); // ✅ Fetch localized messages
+// ✅ Separate GuestNameFetcher component to prevent hydration mismatch
+function GuestNameFetcher({ setGuestName }) {
   const searchParams = useSearchParams();
-  const [guestName, setGuestName] = useState("");
-  const [showWelcome, setShowWelcome] = useState(true);
-  const [confetti, setConfetti] = useState([]);
-
-  // ✅ Read name from URL and set it for the RSVP form
   useEffect(() => {
     const urlName = searchParams.get("name");
     if (urlName) {
       setGuestName(decodeURIComponent(urlName)); // Fix encoding issues
     }
   }, [searchParams]);
+
+  return null;
+}
+
+export default function HomePage({ params }) {
+  const locale = params.locale || "am"; // ✅ Get locale from dynamic route
+  const messages = useMessages(locale); // ✅ Fetch localized messages
+  const [guestName, setGuestName] = useState("");
+  const [showWelcome, setShowWelcome] = useState(true);
+  const [confetti, setConfetti] = useState([]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,6 +53,11 @@ export default function HomePage({ params }) {
 
   return (
     <div className={styles.container}>
+      {/* ✅ Suspense for fetching guest name safely */}
+      <Suspense fallback={<div>Loading guest name...</div>}>
+        <GuestNameFetcher setGuestName={setGuestName} />
+      </Suspense>
+
       {showWelcome ? (
         <div className={styles.welcomeScreen}>
           {guestName && (
