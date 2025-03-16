@@ -176,6 +176,8 @@
   padding-bottom: 100px;
 }
 
+/* loading ? t("pdfGenerating") : `📄 ${t("pdfDownloadButton")}` */
+
 /* ✅ Mobile Responsiveness */
 @media (max-width: 480px) {
   .container {
