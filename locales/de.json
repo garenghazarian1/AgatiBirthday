@@ -52,5 +52,7 @@
   "cancelButton": "Abbrechen",
   "deleteConfirmation": "Sind Sie sicher, dass Sie dieses RSVP löschen möchten?",
   "noRSVPsMessage": "Noch keine RSVPs.",
-  "totalGuests": "Gesamtzahl der Gäste"
+  "totalGuests": "Gesamtzahl der Gäste",
+  "exportCSV": "CSV herunterladen",
+  "csvDownloadError": "Fehler beim Herunterladen der CSV."
 }

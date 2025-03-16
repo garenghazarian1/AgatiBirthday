@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import LanguageSwitcher from "@/components/LanguageSwitcher/LanguageSwitcher";
 import Invitation from "@/components/Invitation/Invitation";
 import RSVPForm from "@/components/RSVPForm/RSVPForm";
@@ -10,9 +11,19 @@ import InvitationContent from "@/components/invitationContent/InvitationContent"
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {
-  const t = useTranslations(); // 🌍 Use translations based on language
+  const t = useTranslations();
+  const searchParams = useSearchParams();
   const [showWelcome, setShowWelcome] = useState(true);
   const [confetti, setConfetti] = useState([]);
+  const [guestName, setGuestName] = useState("");
+
+  // ✅ Read name from URL and set it for the RSVP form
+  useEffect(() => {
+    const urlName = searchParams.get("name");
+    if (urlName) {
+      setGuestName(decodeURIComponent(urlName)); // Fix encoding issues
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,9 +47,14 @@ export default function HomePage() {
     <div className={styles.container}>
       {showWelcome ? (
         <div className={styles.welcomeScreen}>
-          <h1 className={styles.welcomeTitle1}>{t("welcome1")}</h1>
-          <h1 className={styles.welcomeTitle2}>{t("welcome2")}</h1>
-          <h1 className={styles.welcomeTitle3}>{t("welcome3")}</h1>
+          {guestName && (
+            <h2 className={styles.welcomeTitleName}>🎉 {guestName} 🎉</h2>
+          )}
+          <h2 className={styles.welcomeTitle1}>{t("welcome1")}</h2>
+          <h2 className={styles.welcomeTitle2}>{t("welcome2")}</h2>
+          <h2 className={styles.welcomeTitle3}>{t("welcome3")}</h2>
+          {/* 🏆 Display Guest's Name if Available */}
+
           <p className={styles.welcomeText}>{t("welcome4")}</p>
 
           {confetti.map((piece) => (
@@ -73,3 +89,6 @@ export default function HomePage() {
     </div>
   );
 }
+
+// Personalized Invitation Links (/invite?name=John)
+// 3️⃣ 📅 Google Calendar Integration

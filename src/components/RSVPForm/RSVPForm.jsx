@@ -3,7 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./RSVPForm.module.css";
-import RSVPInvitationPDF from "@/components/InvitationPDF"; // ✅ Import the PDF component
+import RSVPInvitationPDF from "@/components/InvitationPDF";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 export default function RSVPForm() {
   const t = useTranslations();
@@ -90,6 +92,27 @@ export default function RSVPForm() {
     setLoading(false);
   };
 
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const urlName = searchParams.get("name");
+    if (urlName) {
+      setName(decodeURIComponent(urlName));
+    }
+  }, [searchParams]);
+
+  // ✅ Google Calendar Link Generator
+  const generateGoogleCalendarLink = () => {
+    const eventTitle = encodeURIComponent("Ani & Agati's Baptism");
+    const eventDetails = encodeURIComponent(
+      "Join us to celebrate the baptism of Ani & Agati! 🎉"
+    );
+    const location = encodeURIComponent("Etchmiadzin Cathedral, Armenia");
+    const startDateTime = "20250730T100000Z"; // UTC format: YYYYMMDDTHHMMSSZ
+    const endDateTime = "20250730T140000Z"; // Event duration: 4 hours
+
+    return `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&dates=${startDateTime}/${endDateTime}`;
+  };
+
   return (
     <div
       ref={sectionRef}
@@ -147,6 +170,15 @@ export default function RSVPForm() {
         <div className={styles.confirmationContainer}>
           <p className={styles.confirmation}>✅ {t("rsvpMessage")}</p>
           <RSVPInvitationPDF name={name} guests={guests} comment={comment} />
+          {/* 🗓 Google Calendar Button */}
+          <Link
+            href={generateGoogleCalendarLink()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.calendarButton}
+          >
+            📅 Add to Google Calendar
+          </Link>
         </div>
       )}
     </div>

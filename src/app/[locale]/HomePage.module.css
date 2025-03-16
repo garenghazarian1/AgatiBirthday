@@ -51,6 +51,52 @@
 }
 
 /* ✨ Animated Welcome Text */
+
+/* 🎉 Guest Name Styling */
+.welcomeTitleName {
+  position: absolute;
+  top: 10%; /* ✅ Adjusted positioning */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.2rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInScale 1.5s ease-out forwards;
+  white-space: nowrap; /* ✅ Prevents text from wrapping */
+  z-index: 10; /* ✅ Ensures it's above other elements */
+}
+
+/* 🌟 Fade-in and Scale Animation */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -10px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* 📱 Responsive Design for Mobile */
+@media (max-width: 480px) {
+  .welcomeTitleName {
+    font-size: 1.8rem;
+    top: 12%;
+  }
+}
+
+@media (max-width: 370px) {
+  .welcomeTitleName {
+    font-size: 1.5rem;
+    top: 12%;
+  }
+}
+
 .welcomeTitle1 {
   font-size: 1.5rem;
   font-weight: bold;
@@ -197,6 +243,9 @@
 
 /* 🔽 Responsive Design for Mobile (370px & Below) */
 @media (max-width: 370px) {
+  .welcomeTitleName {
+    font-size: 1.5rem;
+  }
   .welcomeTitle1 {
     font-size: 1.2rem;
   }

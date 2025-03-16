@@ -52,5 +52,7 @@
   "cancelButton": "Отмена",
   "deleteConfirmation": "Вы уверены, что хотите удалить этот RSVP?",
   "noRSVPsMessage": "RSVP пока нет.",
-  "totalGuests": "Общее количество гостей"
+  "totalGuests": "Общее количество гостей",
+  "exportCSV": "Скачать CSV",
+  "csvDownloadError": "Ошибка при загрузке CSV."
 }

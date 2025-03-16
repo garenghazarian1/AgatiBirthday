@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import styles from "./AdminDashboard.module.css";
+import Link from "next/link";
 
 export default function AdminDashboard() {
   const t = useTranslations();
@@ -16,12 +17,10 @@ export default function AdminDashboard() {
     comment: "",
   });
 
-  // ✅ Ensure translations are loaded before rendering
   useEffect(() => {
     setHydrated(true);
   }, []);
 
-  // ✅ Fetch RSVP Data
   useEffect(() => {
     if (!hydrated) return;
     fetchRSVPs();
@@ -41,6 +40,26 @@ export default function AdminDashboard() {
 
   // ✅ Calculate Total Guests
   const totalGuests = rsvps.reduce((sum, rsvp) => sum + (rsvp.guests || 0), 0);
+
+  // ✅ Download CSV File
+  const handleDownloadCSV = async () => {
+    try {
+      const response = await fetch("/api/export-rsvps");
+      if (!response.ok) throw new Error("Failed to generate CSV");
+
+      const csvBlob = await response.blob();
+      const csvUrl = URL.createObjectURL(csvBlob);
+      const a = document.createElement("a");
+      a.href = csvUrl;
+      a.download = "RSVPs.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error("❌ Error downloading CSV:", error);
+      alert(t("csvDownloadError"));
+    }
+  };
 
   // ✅ Delete RSVP
   const handleDelete = async (id) => {
@@ -81,12 +100,20 @@ export default function AdminDashboard() {
 
   return (
     <div className={styles.container}>
+      <Link href="/admin/invitationGenerator">
+        <button className={styles.inviteButton}>🎟 Generate Invitations</button>
+      </Link>
       <h2 className={styles.title}>📋 {t("adminTitle")}</h2>
 
       {/* ✅ Display Total Guest Count */}
       <p className={styles.totalGuests}>
         {t("totalGuests")}: <strong>{totalGuests}</strong>
       </p>
+
+      {/* ✅ CSV Export Button */}
+      <button onClick={handleDownloadCSV} className={styles.exportButton}>
+        📥 {t("exportCSV")}
+      </button>
 
       {loading ? (
         <p className={styles.loading}>{t("loadingMessage")}</p>

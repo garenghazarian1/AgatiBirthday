@@ -203,3 +203,22 @@
     padding: 8px 12px;
   }
 }
+
+/* 🗓 Google Calendar Button */
+.calendarButton {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 18px;
+  background: #4285f4;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.calendarButton:hover {
+  background: #357ae8;
+}

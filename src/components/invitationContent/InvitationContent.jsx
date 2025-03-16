@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,8 +9,18 @@ import styles from "./InvitationContent.module.css";
 
 export default function InvitationContent() {
   const t = useTranslations();
+  const searchParams = useSearchParams();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const [guestName, setGuestName] = useState("");
+
+  // ✅ Read name from URL and set it for the RSVP form
+  useEffect(() => {
+    const urlName = searchParams.get("name");
+    if (urlName) {
+      setGuestName(decodeURIComponent(urlName)); // Fix encoding issues
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,6 +56,9 @@ export default function InvitationContent() {
       <div
         className={`${styles.textContainer} ${isVisible ? styles.visible : ""}`}
       >
+        {guestName && (
+          <h2 className={styles.welcomeTitleName}>🎉 {guestName} 🎉</h2>
+        )}
         <h2 className={`${styles.title} ${isVisible ? styles.visible : ""}`}>
           {t("invitationTitle")}
         </h2>

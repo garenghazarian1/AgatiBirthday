@@ -52,5 +52,7 @@
   "cancelButton": "Չեղարկել",
   "deleteConfirmation": "Վստա՞հ եք, որ ցանկանում եք ջնջել այս RSVP-ն:",
   "noRSVPsMessage": "Դեռ RSVP չկա։",
-  "totalGuests": "Ընդհանուր հյուրեր"
+  "totalGuests": "Ընդհանուր հյուրեր",
+  "exportCSV": "Ներբեռնել CSV",
+  "csvDownloadError": "Սխալ՝ CSV ներբեռնելու ժամանակ։"
 }

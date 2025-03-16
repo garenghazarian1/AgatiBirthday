@@ -23,6 +23,23 @@
   color: #2c3e50;
 }
 
+.exportButton {
+  padding: 10px 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.exportButton:hover {
+  background-color: #0056b3;
+}
+
 /* ✅ Loading & No Data Styles */
 .loading,
 .noData {
@@ -152,5 +169,44 @@
     padding: 5px 8px;
     font-size: 0.75rem;
     margin: 2px;
+  }
+}
+
+.inviteButton {
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    #ff7e5f,
+    #feb47b
+  ); /* 🔥 Modern gradient */
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+}
+
+.inviteButton:hover {
+  background: linear-gradient(
+    135deg,
+    #ff9966,
+    #ff5e62
+  ); /* 🎨 Brighter hover effect */
+  transform: scale(1.05);
+}
+
+.inviteButton:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 480px) {
+  .inviteButton {
+    font-size: 1rem;
+    padding: 10px 15px;
   }
 }

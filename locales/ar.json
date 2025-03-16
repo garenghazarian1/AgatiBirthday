@@ -52,5 +52,7 @@
   "cancelButton": "إلغاء",
   "deleteConfirmation": "هل أنت متأكد أنك تريد حذف هذا الحجز؟",
   "noRSVPsMessage": "لا يوجد حجوزات حتى الآن.",
-  "totalGuests": "إجمالي الضيوف"
+  "totalGuests": "إجمالي الضيوف",
+  "exportCSV": "تحميل CSV",
+  "csvDownloadError": "حدث خطأ أثناء تنزيل CSV."
 }
