@@ -9,6 +9,7 @@ import RSVPForm from "@/components/RSVPForm/RSVPForm";
 import FlipClock from "@/components/FlipClock/FlipClock";
 import InvitationContent from "@/components/invitationContent/InvitationContent";
 import styles from "./HomePage.module.css";
+import AutoScroll from "@/components/AutoScroll/AutoScroll";
 
 // ✅ Move `useSearchParams()` into a separate component
 function GuestNameFetcher({ setGuestName }) {
@@ -53,6 +54,8 @@ export default function HomePage() {
       <Suspense fallback={<div>Loading guest name...</div>}>
         <GuestNameFetcher setGuestName={setGuestName} />
       </Suspense>
+      {/* AutoScroll Component */}
+      <AutoScroll />
 
       {showWelcome ? (
         <div className={styles.welcomeScreen}>
@@ -79,13 +82,13 @@ export default function HomePage() {
       ) : (
         <div className={styles.scrollContainer}>
           <LanguageSwitcher />
-          <section className={styles.section}>
+          <section id="section2" className={styles.section}>
             <Invitation />
           </section>
-          <section className={styles.section}>
+          <section id="section3" className={styles.section}>
             <InvitationContent />
           </section>
-          <section className={styles.section}>
+          <section id="rsvpSection" className={styles.section}>
             <RSVPForm />
           </section>
           <section className={styles.section}>
