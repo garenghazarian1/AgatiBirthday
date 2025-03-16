@@ -13,9 +13,9 @@ export default function AutoScroll() {
       }, delay);
     };
 
-    scrollToSection("section2", 15000);
-    scrollToSection("section3", 25000);
-    scrollToSection("rsvpSection", 40000);
+    scrollToSection("section2", 5000);
+    scrollToSection("section3", 15000);
+    scrollToSection("rsvpSection", 30000);
   }, []);
 
   return null;
