@@ -125,81 +125,6 @@
   }
 }
 
-/* .celebrationBackground {
-  position: relative;
-  overflow: hidden;
-  width: 100vw;
-  height: 100%;
-  background: radial-gradient(circle, #fff8f0, #ffe6e2);
-  z-index: -10;
-}
-
-.celebrationBackground::before,
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(white 2px, transparent 2px),
-    radial-gradient(gold 2px, transparent 2px),
-    radial-gradient(pink 2px, transparent 2px);
-  background-size: 200px 200px;
-  background-position: 0 0, 50px 50px, 100px 100px;
-  animation: sparkle 10s infinite linear;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.celebrationBackground::before,
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(white 2px, transparent 2px),
-    radial-gradient(gold 2px, transparent 2px),
-    radial-gradient(pink 2px, transparent 2px);
-  background-size: 200px 200px;
-  background-position: 0 0, 500px 50px, 200px 400px;
-  animation: sparkle 10s infinite linear;
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.2);
-  }
-}
-
-.celebrationBackground::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(circle at 20% 30%, #ffd700, transparent),
-    radial-gradient(circle at 80% 20%, pink, transparent),
-    radial-gradient(circle at 50% 80%, white, transparent);
-  background-size: 200px 200px, 150px 150px, 180px 180px;
-  background-repeat: no-repeat;
-  animation: sparkle 5s infinite ease-in-out;
-  pointer-events: none;
-} */
-
-/* Modern 3D animation with smooth transitions */
-/* Hide the page before animation starts */
 .hiddenPage {
   visibility: hidden;
   opacity: 0;
@@ -299,5 +224,12 @@
   to {
     opacity: 1;
     transform: translateX(0) skewX(0);
+  }
+}
+
+@media (max-width: 375px) {
+  .title {
+    font-size: 150%;
+    margin: 1rem 0rem;
   }
 }

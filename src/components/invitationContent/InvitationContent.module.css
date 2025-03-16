@@ -58,13 +58,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   text-align: center;
-  background: rgba(255, 255, 255, 0.85);
-  /* backdrop-filter: blur(8px); */
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s;
@@ -75,6 +73,13 @@
   transform: translateY(0);
 }
 
+.title {
+  text-align: center;
+  color: #ce9907;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+}
 /* Subtitle animation */
 .subtitle {
   text-align: center;
@@ -138,11 +143,11 @@
 @media (max-width: 480px) {
   .textContainer {
     width: 95%;
-    padding: 1rem;
+    padding: 0.8rem;
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .details,
@@ -156,9 +161,12 @@
     width: 98%;
     padding: 0.8rem;
   }
+  .title {
+    font-size: 1rem;
+  }
 
   .subtitle {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .details,
