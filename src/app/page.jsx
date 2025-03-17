@@ -10,6 +10,7 @@ import FlipClock from "@/components/FlipClock/FlipClock";
 import InvitationContent from "@/components/invitationContent/InvitationContent";
 import styles from "./[locale]/HomePage.module.css";
 import AutoScroll from "@/components/AutoScroll/AutoScroll";
+import UserComments from "@/components/UserComments/UserComments";
 
 // ✅ Separate GuestNameFetcher component to prevent hydration mismatch
 function GuestNameFetcher({ setGuestName }) {
