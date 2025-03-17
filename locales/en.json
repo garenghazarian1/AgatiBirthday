@@ -54,5 +54,10 @@
   "noRSVPsMessage": "No RSVPs yet.",
   "totalGuests": "Total Guests",
   "exportCSV": "Download CSV",
-  "csvDownloadError": "Error downloading CSV."
+  "csvDownloadError": "Error downloading CSV.",
+  "flipClockTitle": "⏳ Baptism Countdown: Ani & Agati",
+  "d": "Days",
+  "h": "Hours",
+  "m": "Minutes",
+  "s": "Seconds"
 }

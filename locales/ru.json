@@ -54,5 +54,10 @@
   "noRSVPsMessage": "RSVP пока нет.",
   "totalGuests": "Общее количество гостей",
   "exportCSV": "Скачать CSV",
-  "csvDownloadError": "Ошибка при загрузке CSV."
+  "csvDownloadError": "Ошибка при загрузке CSV.",
+  "flipClockTitle": "⏳ Обратный отсчет до крещения: Ани и Агати",
+  "d": "Дни",
+  "h": "Часы",
+  "m": "Минуты",
+  "s": "Секунды"
 }

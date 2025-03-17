@@ -54,5 +54,10 @@
   "noRSVPsMessage": "Դեռ RSVP չկա։",
   "totalGuests": "Ընդհանուր հյուրեր",
   "exportCSV": "Ներբեռնել CSV",
-  "csvDownloadError": "Սխալ՝ CSV ներբեռնելու ժամանակ։"
+  "csvDownloadError": "Սխալ՝ CSV ներբեռնելու ժամանակ։",
+  "flipClockTitle": "⏳ Մկրտության հետհաշվարկ․ Անի և Աղատի",
+  "d": "Օրեր",
+  "h": "Ժամեր",
+  "m": "Րոպեներ",
+  "s": "Վայրկյաններ"
 }

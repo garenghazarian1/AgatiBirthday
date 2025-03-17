@@ -54,5 +54,10 @@
   "noRSVPsMessage": "Noch keine RSVPs.",
   "totalGuests": "Gesamtzahl der Gäste",
   "exportCSV": "CSV herunterladen",
-  "csvDownloadError": "Fehler beim Herunterladen der CSV."
+  "csvDownloadError": "Fehler beim Herunterladen der CSV.",
+  "flipClockTitle": "⏳ Tauf-Countdown: Ani & Agati",
+  "d": "Tage",
+  "h": "Stunden",
+  "m": "Minuten",
+  "s": "Sekunden"
 }

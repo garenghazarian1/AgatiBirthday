@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./FlipClock.module.css";
 
 export default function FlipClock({ eventDate }) {
+  const t = useTranslations();
   const [timeLeft, setTimeLeft] = useState({});
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -60,7 +62,7 @@ export default function FlipClock({ eventDate }) {
         isVisible ? styles.visible : ""
       }`}
     >
-      <h2 className={styles.headline}>⏳ Baptism Countdown: Ani & Agati</h2>
+      <h2 className={styles.headline}>{t("flipClockTitle")}</h2>
 
       <div className={styles.flipUnitsWrapper}>
         {Object.entries(timeLeft).map(([unit, value]) => {
@@ -71,7 +73,7 @@ export default function FlipClock({ eventDate }) {
                 <div className={styles.flipFront}>{displayValue}</div>
                 <div className={styles.flipBack}>{displayValue}</div>
               </div>
-              <span className={styles.label}>{unit.toUpperCase()}</span>
+              <span className={styles.label}>{t(unit.toLowerCase())}</span>
             </div>
           );
         })}

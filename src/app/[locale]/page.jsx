@@ -10,6 +10,7 @@ import FlipClock from "@/components/FlipClock/FlipClock";
 import InvitationContent from "@/components/invitationContent/InvitationContent";
 import styles from "./HomePage.module.css";
 import AutoScroll from "@/components/AutoScroll/AutoScroll";
+import UserComments from "@/components/UserComments/UserComments";
 
 // ✅ Move `useSearchParams()` into a separate component
 function GuestNameFetcher({ setGuestName }) {
@@ -49,53 +50,58 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className={styles.container}>
-      {/* ✅ Suspense prevents hydration errors */}
-      <Suspense fallback={<div>Loading guest name...</div>}>
-        <GuestNameFetcher setGuestName={setGuestName} />
-      </Suspense>
-      {/* AutoScroll Component */}
-      <AutoScroll />
+    <>
+      <div className={styles.container}>
+        {/* ✅ Suspense prevents hydration errors */}
+        <Suspense fallback={<div>Loading guest name...</div>}>
+          <GuestNameFetcher setGuestName={setGuestName} />
+        </Suspense>
+        {/* AutoScroll Component */}
+        <AutoScroll />
 
-      {showWelcome ? (
-        <div className={styles.welcomeScreen}>
-          {guestName && (
-            <h2 className={styles.welcomeTitleName}>🎉 {guestName} 🎉</h2>
-          )}
-          <h2 className={styles.welcomeTitle1}>{t("welcome1")}</h2>
-          <h2 className={styles.welcomeTitle2}>{t("welcome2")}</h2>
-          <h2 className={styles.welcomeTitle3}>{t("welcome3")}</h2>
-          <p className={styles.welcomeText}>{t("welcome4")}</p>
+        {showWelcome ? (
+          <div className={styles.welcomeScreen}>
+            {guestName && (
+              <h2 className={styles.welcomeTitleName}>🎉 {guestName} 🎉</h2>
+            )}
+            <h2 className={styles.welcomeTitle1}>{t("welcome1")}</h2>
+            <h2 className={styles.welcomeTitle2}>{t("welcome2")}</h2>
+            <h2 className={styles.welcomeTitle3}>{t("welcome3")}</h2>
+            <p className={styles.welcomeText}>{t("welcome4")}</p>
 
-          {confetti.map((piece) => (
-            <div
-              key={piece.id}
-              className={styles.confetti}
-              style={{
-                left: piece.left,
-                animationDuration: piece.animationDuration,
-                animationDelay: piece.delay,
-              }}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className={styles.scrollContainer}>
-          <LanguageSwitcher />
-          <section id="section2" className={styles.section}>
-            <Invitation />
-          </section>
-          <section id="section3" className={styles.section}>
-            <InvitationContent />
-          </section>
-          <section id="rsvpSection" className={styles.section}>
-            <RSVPForm />
-          </section>
-          <section className={styles.section}>
-            <FlipClock eventDate="2025-07-30T10:00:00" />
-          </section>
-        </div>
-      )}
-    </div>
+            {confetti.map((piece) => (
+              <div
+                key={piece.id}
+                className={styles.confetti}
+                style={{
+                  left: piece.left,
+                  animationDuration: piece.animationDuration,
+                  animationDelay: piece.delay,
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className={styles.scrollContainer}>
+            <LanguageSwitcher />
+            <section id="section2" className={styles.section}>
+              <Invitation />
+            </section>
+            <section id="section3" className={styles.section}>
+              <InvitationContent />
+            </section>
+            <section id="rsvpSection" className={styles.section}>
+              <RSVPForm />
+            </section>
+            <section className={styles.section}>
+              <FlipClock eventDate="2025-07-30T10:00:00" />
+            </section>
+          </div>
+        )}
+      </div>
+      <section className={styles.section1}>
+        <UserComments />
+      </section>
+    </>
   );
 }

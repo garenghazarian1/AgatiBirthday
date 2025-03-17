@@ -54,5 +54,10 @@
   "noRSVPsMessage": "لا يوجد حجوزات حتى الآن.",
   "totalGuests": "إجمالي الضيوف",
   "exportCSV": "تحميل CSV",
-  "csvDownloadError": "حدث خطأ أثناء تنزيل CSV."
+  "csvDownloadError": "حدث خطأ أثناء تنزيل CSV.",
+  "flipClockTitle": "⏳ العد التنازلي للمعمودية: آني و آغاتي",
+  "d": "أيام",
+  "h": "ساعات",
+  "m": "دقائق",
+  "s": "ثواني"
 }
