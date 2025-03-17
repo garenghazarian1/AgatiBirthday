@@ -148,7 +148,7 @@ export default function UserComments() {
                     onChange={(e) => setEditText(e.target.value)}
                     className={styles.textareaEdit}
                   />
-                  <div className={styles.saveEditContainer}>
+                  <div className={styles.textareaEditB}>
                     <button
                       onClick={() => handleSaveEdit(c._id)}
                       className={styles.saveButton}

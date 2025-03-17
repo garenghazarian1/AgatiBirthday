@@ -1,6 +1,6 @@
 .container {
   width: 90vw;
-  height: 100%;
+  height: 100vh;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -82,11 +82,11 @@
   resize: vertical;
 }
 .textareaEdit {
-  min-height: 60px;
+  height: 60px;
   width: 60%;
+  gap: 1rem;
   padding: 10px;
   border-radius: 8px;
-  border: 2px solid #b87d6b;
   font-size: 0.8rem;
   transition: all 0.3s ease-in-out;
   background: rgba(255, 255, 255, 0.5);
@@ -95,7 +95,25 @@
 }
 
 .textareaEdit:focus {
-  border-color: #7d4a48;
+  box-shadow: 0 0 8px rgba(125, 74, 72, 0.5);
+}
+
+.textareaEditB {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  height: 60px;
+  width: 60%;
+  gap: 1rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.5);
+  color: #5a322f;
+  outline: none;
+}
+
+.textareaEditB:focus {
   box-shadow: 0 0 8px rgba(125, 74, 72, 0.5);
 }
 .button {
@@ -132,7 +150,7 @@
 
 .comment {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
