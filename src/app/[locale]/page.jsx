@@ -96,9 +96,9 @@ export default function HomePage() {
             <section className={styles.section}>
               <FlipClock eventDate="2025-07-30T10:00:00" />
             </section>
-            {/* <section className={styles.section1}>
+            <section className={styles.section}>
               <UserComments />
-            </section> */}
+            </section>
           </div>
         )}
       </div>

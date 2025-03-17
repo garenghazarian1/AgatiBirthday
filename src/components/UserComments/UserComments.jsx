@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./UserComments.module.css";
 
 export default function UserComments() {
@@ -10,6 +10,9 @@ export default function UserComments() {
   const [userCommentId, setUserCommentId] = useState(null);
   const [editCommentId, setEditCommentId] = useState(null);
   const [editText, setEditText] = useState("");
+
+  // ✅ Create ref for the comment list container
+  const commentListRef = useRef(null);
 
   // ✅ Load user comment ID from localStorage
   useEffect(() => {
@@ -102,6 +105,42 @@ export default function UserComments() {
     }
   };
 
+  //   swipe
+  useEffect(() => {
+    const list = commentListRef.current;
+    if (!list) return; // ✅ Fix null issue (ensure list exists)
+
+    let startX = 0;
+    let scrollLeft = 0;
+    let isDragging = false;
+
+    const startTouch = (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX;
+      scrollLeft = list.scrollLeft;
+    };
+
+    const moveTouch = (e) => {
+      if (!isDragging) return;
+      const walk = startX - e.touches[0].pageX;
+      list.scrollLeft = scrollLeft + walk;
+    };
+
+    const endTouch = () => {
+      isDragging = false;
+    };
+
+    list.addEventListener("touchstart", startTouch);
+    list.addEventListener("touchmove", moveTouch);
+    list.addEventListener("touchend", endTouch);
+
+    return () => {
+      list.removeEventListener("touchstart", startTouch);
+      list.removeEventListener("touchmove", moveTouch);
+      list.removeEventListener("touchend", endTouch);
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.headline}>
@@ -137,7 +176,7 @@ export default function UserComments() {
       {comments.length === 0 ? (
         <p>No comments yet.</p>
       ) : (
-        <ul className={styles.commentList}>
+        <ul className={styles.commentList} ref={commentListRef}>
           {comments.map((c) => (
             <li key={c._id} className={styles.comment}>
               <strong className={styles.liStrong}>{c.name}:</strong>
