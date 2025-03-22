@@ -1,29 +1,27 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./UserComments.module.css";
+import confetti from "canvas-confetti";
 
 export default function UserComments() {
+  const t = useTranslations();
   const [comments, setComments] = useState([]);
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [userCommentId, setUserCommentId] = useState(null);
   const [editCommentId, setEditCommentId] = useState(null);
   const [editText, setEditText] = useState("");
-
-  // ✅ Create ref for the comment list container
   const commentListRef = useRef(null);
+  const [recentCommentId, setRecentCommentId] = useState(null);
 
-  // ✅ Load user comment ID from localStorage
   useEffect(() => {
     const storedId = localStorage.getItem("user-comment-id");
-    if (storedId) {
-      setUserCommentId(storedId);
-    }
+    if (storedId) setUserCommentId(storedId);
     fetchComments();
   }, []);
 
-  // ✅ Fetch all comments
   const fetchComments = async () => {
     try {
       const res = await fetch("/api/comments");
@@ -34,14 +32,12 @@ export default function UserComments() {
     }
   };
 
-  // ✅ Submit a new comment
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name.trim() || !comment.trim())
-      return alert("Please fill in all fields.");
+      return alert(t("commentPartFillFields"));
 
     const newComment = { name, comment };
-
     try {
       const res = await fetch("/api/comments", {
         method: "POST",
@@ -50,26 +46,34 @@ export default function UserComments() {
       });
 
       const data = await res.json();
-
-      // ✅ Save comment ID in localStorage so only this user can edit or delete it
       localStorage.setItem("user-comment-id", data.commentId);
       setUserCommentId(data.commentId);
+      setRecentCommentId(data.commentId);
 
-      setComments([...comments, data]); // Add new comment to state
+      setComments([data, ...comments]);
+
       setName("");
       setComment("");
+
+      // 🎉 Trigger confetti celebration
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+      });
+      setTimeout(() => {
+        setRecentCommentId(null);
+      }, 4000);
     } catch (error) {
       console.error("❌ Error posting comment:", error);
     }
   };
 
-  // ✅ Start editing a comment
   const handleEdit = (id, currentText) => {
     setEditCommentId(id);
     setEditText(currentText);
   };
 
-  // ✅ Save the edited comment
   const handleSaveEdit = async (id) => {
     try {
       await fetch("/api/comments", {
@@ -87,10 +91,8 @@ export default function UserComments() {
     }
   };
 
-  // ✅ Delete comment (only if it belongs to the user)
   const handleDelete = async (id) => {
-    if (!confirm("Are you sure you want to delete this comment?")) return;
-
+    if (!confirm(t("commentPartConfirmDelete"))) return;
     try {
       await fetch("/api/comments", {
         method: "DELETE",
@@ -99,16 +101,15 @@ export default function UserComments() {
       });
 
       setComments(comments.filter((c) => c._id !== id));
-      localStorage.removeItem("user-comment-id"); // Remove ID from storage
+      localStorage.removeItem("user-comment-id");
     } catch (error) {
       console.error("❌ Error deleting comment:", error);
     }
   };
 
-  //   swipe
   useEffect(() => {
     const list = commentListRef.current;
-    if (!list) return; // ✅ Fix null issue (ensure list exists)
+    if (!list) return;
 
     let startX = 0;
     let scrollLeft = 0;
@@ -141,44 +142,52 @@ export default function UserComments() {
     };
   }, []);
 
+  // CONFETTI
+
+  // CONFETTI END
+
   return (
     <div className={styles.container}>
       <div className={styles.headline}>
-        <h2 className={styles.title}>📝Express your joy,</h2>
-        <p className={styles.titleText}>
-          send your best wishes, or leave a heartfelt message for Ani & Agati’s
-          special day!
-        </p>
+        <h2 className={styles.title}>📝 {t("commentPartTitle")}</h2>
+        <p className={styles.titleText}>{t("commentPartSubtitle")}</p>
       </div>
 
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
-          placeholder="Your Name"
+          placeholder={t("commentPartNamePlaceholder")}
           value={name}
           onChange={(e) => setName(e.target.value)}
           className={styles.input}
           required
         />
         <textarea
-          placeholder="Write your comment..."
+          placeholder={t("commentPartCommentPlaceholder")}
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           className={styles.textarea}
           required
         ></textarea>
         <button type="submit" className={styles.button}>
-          Share Message
+          {t("commentPartSubmit")}
         </button>
       </form>
 
-      <h3 className={styles.commentTitle}>💬 Comments:</h3>
+      <h3 className={styles.commentTitle}>
+        💬 {t("commentPartCommentSection")}
+      </h3>
       {comments.length === 0 ? (
-        <p>No comments yet.</p>
+        <p>{t("commentPartNoComments")}</p>
       ) : (
         <ul className={styles.commentList} ref={commentListRef}>
           {comments.map((c) => (
-            <li key={c._id} className={styles.comment}>
+            <li
+              key={c._id}
+              className={`${styles.comment} ${
+                c._id === recentCommentId ? styles.recentHighlight : ""
+              }`}
+            >
               <strong className={styles.liStrong}>{c.name}:</strong>
               {editCommentId === c._id ? (
                 <>
@@ -192,13 +201,13 @@ export default function UserComments() {
                       onClick={() => handleSaveEdit(c._id)}
                       className={styles.saveButton}
                     >
-                      Save
+                      {t("commentPartSave")}
                     </button>
                     <button
                       onClick={() => setEditCommentId(null)}
                       className={styles.cancelButton}
                     >
-                      Cancel
+                      {t("commentPartCancel")}
                     </button>
                   </div>
                 </>
@@ -211,13 +220,13 @@ export default function UserComments() {
                         onClick={() => handleEdit(c._id, c.comment)}
                         className={styles.editButton}
                       >
-                        Edit
+                        {t("commentPartEdit")}
                       </button>
                       <button
                         onClick={() => handleDelete(c._id)}
                         className={styles.deleteButton}
                       >
-                        Delete
+                        {t("commentPartDelete")}
                       </button>
                     </div>
                   )}

@@ -59,5 +59,18 @@
   "d": "Tage",
   "h": "Stunden",
   "m": "Minuten",
-  "s": "Sekunden"
+  "s": "Sekunden",
+  "commentPartTitle": "Teile deine Freude",
+  "commentPartSubtitle": "Sende deine Glückwünsche oder hinterlasse eine herzliche Nachricht für Ani & Agati!",
+  "commentPartNamePlaceholder": "Dein Name",
+  "commentPartCommentPlaceholder": "Schreibe deinen Kommentar...",
+  "commentPartSubmit": "Nachricht senden",
+  "commentPartCommentSection": "Kommentare",
+  "commentPartNoComments": "Noch keine Kommentare.",
+  "commentPartEdit": "Bearbeiten",
+  "commentPartDelete": "Löschen",
+  "commentPartSave": "Speichern",
+  "commentPartCancel": "Abbrechen",
+  "commentPartConfirmDelete": "Möchtest du diesen Kommentar wirklich löschen?",
+  "commentPartFillFields": "Bitte fülle alle Felder aus."
 }

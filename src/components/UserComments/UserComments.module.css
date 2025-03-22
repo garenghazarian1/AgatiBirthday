@@ -159,9 +159,9 @@
 }
 
 /* ✅ Sticky Note Effect */
-.commentList {
+/* .commentList {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
@@ -174,7 +174,7 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   height: 400px;
-}
+} */
 
 /* ✅ Sticky Note Effect */
 .comment {
@@ -190,7 +190,7 @@
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* ✅ Adds depth */
   width: 220px;
-  height: 160px;
+  height: 220px;
   overflow: auto;
   font-family: "Poppins", sans-serif;
   font-size: 0.9rem;
@@ -374,5 +374,34 @@
   .titleText {
     font-size: 0.8rem;
     margin-bottom: 0.7rem;
+  }
+}
+
+.recentHighlight {
+  animation: popFade 0.4s ease-out, highlightFade 4s ease-in forwards;
+  border: 2px solid var(--gold);
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px var(--gold-light);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+@keyframes popFade {
+  0% {
+    transform: scale(1.2);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes highlightFade {
+  0% {
+    box-shadow: 0 0 15px var(--gold-light);
+  }
+  100% {
+    box-shadow: none;
   }
 }

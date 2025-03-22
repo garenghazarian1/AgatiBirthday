@@ -59,5 +59,18 @@
   "d": "Дни",
   "h": "Часы",
   "m": "Минуты",
-  "s": "Секунды"
+  "s": "Секунды",
+  "commentPartTitle": "Выразите свою радость",
+  "commentPartSubtitle": "Оставьте добрые пожелания или теплое сообщение для Ани и Агати!",
+  "commentPartNamePlaceholder": "Ваше имя",
+  "commentPartCommentPlaceholder": "Напишите ваш комментарий...",
+  "commentPartSubmit": "Оставить сообщение",
+  "commentPartCommentSection": "Комментарии",
+  "commentPartNoComments": "Комментариев пока нет.",
+  "commentPartEdit": "Редактировать",
+  "commentPartDelete": "Удалить",
+  "commentPartSave": "Сохранить",
+  "commentPartCancel": "Отмена",
+  "commentPartConfirmDelete": "Вы уверены, что хотите удалить этот комментарий?",
+  "commentPartFillFields": "Пожалуйста, заполните все поля."
 }
