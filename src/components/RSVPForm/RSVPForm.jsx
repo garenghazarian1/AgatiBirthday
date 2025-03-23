@@ -15,7 +15,7 @@ function RSVPFormContent() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false); // ✅ Detect keyboard open state
+  const [isKeyboardOpen, setIsKeyboardOpen] = useState(false);
   const sectionRef = useRef(null);
   const formRef = useRef(null);
   const inputRef = useRef(null);
@@ -45,19 +45,34 @@ function RSVPFormContent() {
     return () => observer.disconnect();
   }, []);
 
-  // ✅ Detect when keyboard is open/close
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerHeight < 500) {
-        setIsKeyboardOpen(true);
-      } else {
-        setIsKeyboardOpen(false);
-      }
+      setIsKeyboardOpen(window.innerHeight < 500);
     };
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const showMojsAnimation = async () => {
+    const mojs = (await import("@mojs/core")).default;
+
+    const burst = new mojs.Burst({
+      left: 0,
+      top: 0,
+      radius: { 0: 100 },
+      count: 20,
+      children: {
+        shape: "polygon",
+        points: 5,
+        fill: { cyan: "yellow" },
+        angle: { 0: 180 },
+        radius: { 20: 0 },
+        duration: 2000,
+      },
+    });
+
+    burst.tune({ x: window.innerWidth / 2, y: window.innerHeight / 2 }).play();
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,7 +80,6 @@ function RSVPFormContent() {
     setError("");
 
     if (!API_URL || API_URL.includes("undefined")) {
-      console.error("❌ API_URL is not set correctly:", API_URL);
       setError("Server error: API URL is not configured.");
       setLoading(false);
       return;
@@ -106,25 +120,26 @@ function RSVPFormContent() {
         throw new Error(`❌ Error: ${errorData.error || response.statusText}`);
       }
 
-      setSubmitted(true);
+      await showMojsAnimation();
+
+      setTimeout(() => {
+        setSubmitted(true);
+      }, 1500);
     } catch (error) {
-      console.error("❌ API Call Error:", error);
       setError(error.message || t("errorMessages"));
     }
 
     setLoading(false);
   };
 
-  // ✅ Google Calendar Link Generator
   const generateGoogleCalendarLink = () => {
     const eventTitle = encodeURIComponent("Ani & Agati's Baptism");
     const eventDetails = encodeURIComponent(
       "Join us to celebrate the baptism of Ani & Agati! 🎉"
     );
     const location = encodeURIComponent("Etchmiadzin Cathedral, Armenia");
-    const startDateTime = "20250730T100000Z"; // UTC format
-    const endDateTime = "20250730T140000Z"; // 4-hour duration
-
+    const startDateTime = "20250730T100000Z";
+    const endDateTime = "20250730T140000Z";
     return `https://www.google.com/calendar/render?action=TEMPLATE&text=${eventTitle}&details=${eventDetails}&location=${location}&dates=${startDateTime}/${endDateTime}`;
   };
 
@@ -134,7 +149,6 @@ function RSVPFormContent() {
       className={`${styles.container} ${isVisible ? styles.visible : ""}`}
     >
       <h2 className={styles.title}>{t("rsvpTitle")}</h2>
-      {/* <p className={styles.requiredNotice}>* {t("requiredFieldsNotice")}</p> */}
 
       {!submitted ? (
         <form
@@ -168,13 +182,13 @@ function RSVPFormContent() {
             onChange={(e) => setGuests(e.target.value)}
             className={styles.input}
             required
-            inputMode="numeric" // ✅ Improves number input experience
+            inputMode="numeric"
             onFocus={() =>
               formRef.current.scrollIntoView({
                 behavior: "smooth",
                 block: "center",
               })
-            } // ✅ Auto-scroll form
+            }
           />
 
           <label className={styles.label}>{t("rsvpForm.commentLabel")}</label>
@@ -196,7 +210,6 @@ function RSVPFormContent() {
           <p className={styles.confirmation}>✅ {t("rsvpMessage")}</p>
           <RSVPInvitationPDF name={name} guests={guests} comment={comment} />
 
-          {/* 🗓 Google Calendar Button */}
           <a
             href={generateGoogleCalendarLink()}
             target="_blank"

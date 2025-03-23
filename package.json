@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mojs/core": "^1.7.1",
     "@react-pdf/renderer": "^4.2.2",
     "canvas-confetti": "^1.9.3",
     "framer-motion": "^12.5.0",
     "gsap": "^3.12.7",
+    "lottie-react": "^2.4.1",
+    "lottie-web": "^5.12.2",
     "mongodb": "^6.14.0",
     "mongoose": "^8.11.0",
     "motion": "^12.5.0",
