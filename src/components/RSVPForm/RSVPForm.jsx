@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import styles from "./RSVPForm.module.css";
 import RSVPInvitationPDF from "@/components/InvitationPDF";
 import { useSearchParams } from "next/navigation";
+import confetti from "canvas-confetti";
+import PhotoCarousel from "../PhotoCarousel/PhotoCarousel";
 
 function RSVPFormContent() {
   const t = useTranslations();
@@ -53,25 +55,12 @@ function RSVPFormContent() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const showMojsAnimation = async () => {
-    const mojs = (await import("@mojs/core")).default;
-
-    const burst = new mojs.Burst({
-      left: 0,
-      top: 0,
-      radius: { 0: 100 },
-      count: 20,
-      children: {
-        shape: "polygon",
-        points: 5,
-        fill: { cyan: "yellow" },
-        angle: { 0: 180 },
-        radius: { 20: 0 },
-        duration: 2000,
-      },
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 150,
+      spread: 80,
+      origin: { y: 0.6 },
     });
-
-    burst.tune({ x: window.innerWidth / 2, y: window.innerHeight / 2 }).play();
   };
 
   const handleSubmit = async (e) => {
@@ -120,7 +109,7 @@ function RSVPFormContent() {
         throw new Error(`❌ Error: ${errorData.error || response.statusText}`);
       }
 
-      await showMojsAnimation();
+      triggerConfetti();
 
       setTimeout(() => {
         setSubmitted(true);
@@ -158,9 +147,9 @@ function RSVPFormContent() {
             isKeyboardOpen ? styles.keyboardOpen : ""
           }`}
         >
-          <label className={styles.label}>
+          {/* <label className={styles.label}>
             {t("rsvpForm.nameLabel")} <span className={styles.required}>*</span>
-          </label>
+          </label> */}
           <input
             type="text"
             placeholder={t("rsvpForm.namePlaceholder")}
@@ -170,10 +159,10 @@ function RSVPFormContent() {
             required
           />
 
-          <label className={styles.label}>
+          {/* <label className={styles.label}>
             {t("rsvpForm.guestsLabel")}{" "}
             <span className={styles.required}>*</span>
-          </label>
+          </label> */}
           <input
             ref={inputRef}
             type="number"
@@ -191,7 +180,7 @@ function RSVPFormContent() {
             }
           />
 
-          <label className={styles.label}>{t("rsvpForm.commentLabel")}</label>
+          {/* <label className={styles.label}>{t("rsvpForm.commentLabel")}</label> */}
           <textarea
             placeholder={t("rsvpForm.commentPlaceholder")}
             value={comment}
@@ -220,13 +209,18 @@ function RSVPFormContent() {
           </a>
         </div>
       )}
+      <PhotoCarousel />
     </div>
   );
 }
 
 export default function RSVPForm() {
   return (
-    <Suspense fallback={<div>Loading RSVP Form...</div>}>
+    <Suspense
+      fallback={
+        <div className={styles.downloadContainer}>Loading RSVP Form...</div>
+      }
+    >
       <RSVPFormContent />
     </Suspense>
   );

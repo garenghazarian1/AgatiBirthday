@@ -108,16 +108,16 @@ export default function InvitationPDF({ name, guests, comment }) {
   );
 
   return (
-    <div style={{ textAlign: "center", marginTop: "20px" }}>
+    <div style={{ textAlign: "center", marginTop: "5px" }}>
       <PDFDownloadLink
         document={<InvitationDocument />}
         fileName={`invitation_${name}.pdf`}
         style={{
           textDecoration: "none",
-          padding: "10px 20px",
+          padding: "10px",
           fontSize: "16px",
           fontWeight: "bold",
-          backgroundColor: "#D35400",
+          backgroundColor: "#e67300",
           color: "white",
           borderRadius: "8px",
           display: "inline-block",
