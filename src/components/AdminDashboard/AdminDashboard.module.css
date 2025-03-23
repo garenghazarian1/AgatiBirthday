@@ -225,3 +225,69 @@
     padding: 10px 15px;
   }
 }
+
+/* ✅ iPhone SE Specific: 320px and below */
+@media (max-width: 320px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .totalGuests {
+    font-size: 1rem;
+  }
+
+  .exportButton {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .loading,
+  .noData {
+    font-size: 1rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.7rem;
+    padding: 4px;
+  }
+
+  .input {
+    font-size: 0.75rem;
+    padding: 5px;
+  }
+
+  .editButton,
+  .deleteButton,
+  .saveButton,
+  .cancelButton {
+    padding: 5px 7px;
+    font-size: 0.7rem;
+    margin: 1px;
+  }
+
+  .inviteButton {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .calendarButton {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .confirmation {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .confirmationContainer {
+    padding: 1rem;
+    gap: 0.8rem;
+  }
+}

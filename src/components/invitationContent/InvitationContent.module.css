@@ -174,3 +174,43 @@
     font-size: 0.85rem;
   }
 }
+
+/* ✅ iPhone SE (320px) Specific Styles */
+@media (max-width: 320px) {
+  .container {
+    padding: 1rem 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .invitationImage {
+    width: 90px;
+  }
+
+  .textContainer {
+    width: 98%;
+    padding: 0.6rem;
+    margin: 0.8rem 0;
+    border-radius: 16px;
+  }
+
+  .title {
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+    margin: 0.6rem 0;
+  }
+
+  .details {
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .googleMapsLink {
+    font-size: 0.75rem;
+    margin-top: 6px;
+  }
+}

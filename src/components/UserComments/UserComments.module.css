@@ -405,3 +405,83 @@
     box-shadow: none;
   }
 }
+
+/* ✅ iPhone SE 320px optimization */
+@media (max-width: 320px) {
+  .container {
+    padding: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .form {
+    gap: 0.3rem;
+    padding: 0.3rem;
+  }
+
+  .input,
+  .textarea,
+  .textareaEdit,
+  .textareaEditB {
+    width: 100%;
+    font-size: 0.7rem;
+    padding: 6px;
+  }
+
+  .button {
+    width: 100%;
+    font-size: 0.75rem;
+    padding: 10px;
+  }
+
+  .confirmation {
+    font-size: 0.85rem;
+    padding: 0.6rem;
+  }
+
+  .calendarButton {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+  }
+
+  .commentList {
+    padding: 1rem;
+    height: 320px;
+  }
+
+  .comment {
+    width: 180px;
+    height: 180px;
+    font-size: 0.75rem;
+  }
+
+  .liStrong,
+  .liStrongP {
+    font-size: 0.6rem;
+  }
+
+  .editButton,
+  .deleteButton,
+  .saveButton,
+  .cancelButton {
+    font-size: 0.65rem;
+    padding: 0.4rem;
+  }
+
+  .confirmationContainer {
+    padding: 0.6rem;
+    width: 95%;
+  }
+
+  .titleText {
+    font-size: 0.8rem;
+  }
+
+  .commentTitle {
+    font-size: 0.85rem;
+  }
+}

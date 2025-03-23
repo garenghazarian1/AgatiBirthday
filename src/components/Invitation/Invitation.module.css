@@ -232,3 +232,34 @@
     margin: 1rem 0rem;
   }
 }
+
+/* ✅ iPhone SE (320px) Specific Styles */
+@media (max-width: 320px) {
+  .card {
+    margin-top: 0.5rem;
+  }
+
+  .decorativeContainer {
+    width: 260px;
+    height: 260px;
+  }
+
+  .decorativeShape {
+    border-width: 4px;
+  }
+
+  .person {
+    width: 210px;
+    height: 210px;
+  }
+
+  .title {
+    font-size: 130%;
+    margin: 0.5rem 0;
+  }
+
+  .celebrationBackground::before,
+  .celebrationBackground::after {
+    background-size: 150px 150px, 120px 120px, 140px 140px;
+  }
+}

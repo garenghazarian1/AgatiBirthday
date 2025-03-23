@@ -178,3 +178,27 @@
     font-size: 0.9rem;
   }
 }
+
+/* ✅ iPhone SE (320px) Support */
+@media (max-width: 320px) {
+  .headline {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .flipUnitsWrapper {
+    gap: 0.6rem;
+    flex-wrap: wrap; /* stack if too tight */
+  }
+
+  .flipCard {
+    width: 55px;
+    height: 75px;
+    font-size: 1.6rem;
+  }
+
+  .label {
+    font-size: 0.75rem;
+    margin-top: 6px;
+  }
+}

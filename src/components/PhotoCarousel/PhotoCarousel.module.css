@@ -61,3 +61,20 @@
   opacity: 0.1;
   z-index: -9;
 }
+
+@media (max-width: 320px) {
+  .decorativeContainer {
+    width: 260px;
+    height: 260px;
+    margin-top: 0.5rem;
+  }
+
+  .decorativeShape {
+    border-width: 3px;
+  }
+
+  .person {
+    width: 210px;
+    height: 210px;
+  }
+}
