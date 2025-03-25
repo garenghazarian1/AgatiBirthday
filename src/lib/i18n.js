@@ -7,7 +7,7 @@ import de from "../../locales/de.json";
 console.log("✅ i18n.js loaded translations");
 
 // 🌍 Set Armenian as the default locale
-export const defaultLocale = "en";
+export const defaultLocale = "am";
 
 const messages = { am, en, ar, ru, de };
 

@@ -17,12 +17,9 @@ export default function Invitation() {
     "/photos/a1.jpg",
     "/photos/a2.jpg",
     "/photos/a3.jpg",
-    // "/photos/a4.jpg",
     "/photos/a5.jpg",
     "/photos/a6.jpg",
-    // "/photos/a7.jpg",
     "/photos/a8.jpg",
-    // "/photos/a9.jpg",
     "/photos/a10.jpg",
     "/photos/a11.jpg",
   ];

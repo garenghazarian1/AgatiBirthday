@@ -27,7 +27,7 @@ export default function AdminGuestLinks() {
     const baseUrl = window.location.origin;
     const links = guests
       .filter((name) => name.trim() !== "")
-      .map((name) => `${baseUrl}?name=${encodeURIComponent(name)}`);
+      .map((name) => `${baseUrl}/am?name=${encodeURIComponent(name)}`);
 
     setGeneratedLinks(links);
   };

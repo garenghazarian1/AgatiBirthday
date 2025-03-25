@@ -9,7 +9,7 @@ export default function IntlProvider({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const supportedLocales = ["am", "en", "ar", "ru", "de"];
-  const defaultLocale = "en";
+  const defaultLocale = "am";
 
   // ✅ Function to detect user language from localStorage or browser settings
   const detectUserLanguage = () => {
