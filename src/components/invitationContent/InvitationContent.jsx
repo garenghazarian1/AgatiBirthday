@@ -71,8 +71,9 @@ export default function InvitationContent() {
         <p className={`${styles.details} ${isVisible ? styles.visible : ""}`}>
           {t("invitationDetails")}
         </p>
+        {/* Church Location */}
         <p className={`${styles.details} ${isVisible ? styles.visible : ""}`}>
-          {t("invitationLocation")}
+          {t("invitationLocationChurch")}
         </p>
         <Link
           href="https://www.google.com/maps?q=576R+PGF,+Vagharshapat,+Armenia"
@@ -81,9 +82,25 @@ export default function InvitationContent() {
           className={`${styles.googleMapsLink} ${
             isVisible ? styles.visible : ""
           }`}
-          aria-label="View location on Google Maps"
+          aria-label="View church location on Google Maps"
         >
-          {t("googleMapsLink")}
+          {t("googleMapsLinkChurch")}
+        </Link>
+
+        {/* Hall Location */}
+        <p className={`${styles.details} ${isVisible ? styles.visible : ""}`}>
+          {t("invitationLocationHall")}
+        </p>
+        <Link
+          href="https://www.google.com/maps/place/Lianna+Garden+Hall/@40.1644476,44.3933191,16.75z/data=!4m7!3m6!1s0x406abf20058b7395:0xc8881d319e6d89ca!4b1!8m2!3d40.1649513!4d44.3920288!16s%2Fg%2F11ktyzthbv"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${styles.googleMapsLink} ${
+            isVisible ? styles.visible : ""
+          }`}
+          aria-label="View hall location on Google Maps"
+        >
+          {t("googleMapsLinkHall")}
         </Link>
       </div>
     </div>

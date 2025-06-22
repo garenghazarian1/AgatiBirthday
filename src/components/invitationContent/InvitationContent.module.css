@@ -76,16 +76,16 @@
 .title {
   text-align: center;
   color: #ce9907;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   letter-spacing: 0.8px;
 }
 /* Subtitle animation */
 .subtitle {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: #7d4a48;
-  font-weight: bold;
+  /* font-weight: bold; */
   letter-spacing: 0.8px;
   margin: 0.8rem 0;
   opacity: 0;
@@ -101,10 +101,10 @@
 /* Paragraph animations */
 .details {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   color: #5a322f;
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   line-height: 1.5;
   opacity: 0;
   transform: translateX(30px);
@@ -152,7 +152,7 @@
 
   .details,
   .googleMapsLink {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -162,7 +162,7 @@
     padding: 0.8rem;
   }
   .title {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .subtitle {
@@ -171,7 +171,7 @@
 
   .details,
   .googleMapsLink {
-    font-size: 0.85rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -194,18 +194,18 @@
   }
 
   .title {
-    font-size: 1rem;
+    font-size: 0.7rem;
     letter-spacing: 0.5px;
   }
 
   .subtitle {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     margin: 0.6rem 0;
   }
 
   .details {
-    font-size: 0.75rem;
-    margin-bottom: 6px;
+    font-size: 0.7rem;
+    margin-bottom: 2px;
     line-height: 1.4;
   }
 
