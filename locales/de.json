@@ -72,5 +72,9 @@
   "commentPartSave": "Speichern",
   "commentPartCancel": "Abbrechen",
   "commentPartConfirmDelete": "Möchtest du diesen Kommentar wirklich löschen?",
-  "commentPartFillFields": "Bitte fülle alle Felder aus."
+  "commentPartFillFields": "Bitte fülle alle Felder aus.",
+  "invitationLocationChurch": "Kirche: Kathedrale von Etschmiadsin, Armenien",
+  "googleMapsLinkChurch": "Kirche auf Google Maps anzeigen",
+  "invitationLocationHall": "Saal: Lianna Garden, Armenien",
+  "googleMapsLinkHall": "Saal auf Google Maps anzeigen"
 }

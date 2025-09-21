@@ -72,5 +72,9 @@
   "commentPartSave": "Сохранить",
   "commentPartCancel": "Отмена",
   "commentPartConfirmDelete": "Вы уверены, что хотите удалить этот комментарий?",
-  "commentPartFillFields": "Пожалуйста, заполните все поля."
+  "commentPartFillFields": "Пожалуйста, заполните все поля.",
+  "invitationLocationChurch": "Церковь: Эчмиадзинский кафедральный собор , Армения",
+  "googleMapsLinkChurch": "Посмотреть церковь на Google Картах",
+  "invitationLocationHall": "Зал: Lianna Garden, Армения",
+  "googleMapsLinkHall": "Посмотреть зал на Google Картах"
 }

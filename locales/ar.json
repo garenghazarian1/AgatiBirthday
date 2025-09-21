@@ -72,5 +72,9 @@
   "commentPartSave": "حفظ",
   "commentPartCancel": "إلغاء",
   "commentPartConfirmDelete": "هل أنت متأكد أنك تريد حذف هذا التعليق؟",
-  "commentPartFillFields": "يرجى ملء جميع الحقول."
+  "commentPartFillFields": "يرجى ملء جميع الحقول.",
+  "invitationLocationChurch": "الكنيسة: كاتدرائية إتشميادزين، أرمينيا",
+  "googleMapsLinkChurch": "عرض موقع الكنيسة على Google Maps",
+  "invitationLocationHall": "القاعة: صالة Lianna Garden، أرمينيا",
+  "googleMapsLinkHall": "عرض موقع القاعة على Google Maps"
 }
